@@ -1,4 +1,4 @@
-# An Investigation on Kripke-style Modal Type Theories
+# An Investigation of Kripke-style Modal Type Theories
 
 
 This homepage contains the investigation on properties of Kripke-style modal type
