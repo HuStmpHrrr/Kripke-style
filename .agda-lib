@@ -1,0 +1,4 @@
+depend:
+include:
+  ./src
+  ./lib/agda-stdlib/src
