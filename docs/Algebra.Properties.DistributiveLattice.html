@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Algebra.Properties.DistributiveLattice</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- This module is DEPRECATED.</a>
+<a class="Comment" id="136">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="210">{-#</a> <a class="Keyword" id="214">OPTIONS</a> <a class="Pragma" id="222">--without-K</a> <a class="Pragma" id="234">--safe</a> <a class="Symbol" id="241">#-}</a>
+
+<a class="Comment" id="246">-- Disabled to prevent warnings from deprecated names</a>
+<a class="Symbol" id="300">{-#</a> <a class="Keyword" id="304">OPTIONS</a> <a class="Pragma" id="312">--warn=noUserWarning</a> <a class="Symbol" id="333">#-}</a>
+
+<a class="Keyword" id="338">open</a> <a class="Keyword" id="343">import</a> <a class="Module" href="Algebra.Lattice.Bundles.html" id="350">Algebra.Lattice.Bundles</a>
+<a class="Keyword" id="374">open</a> <a class="Keyword" id="379">import</a> <a class="Module" href="Algebra.Lattice.Structures.Biased.html" id="386">Algebra.Lattice.Structures.Biased</a>
+<a class="Keyword" id="420">open</a> <a class="Keyword" id="425">import</a> <a class="Module" href="Relation.Binary.html" id="432">Relation.Binary</a>
+<a class="Keyword" id="448">open</a> <a class="Keyword" id="453">import</a> <a class="Module" href="Function.Equality.html" id="460">Function.Equality</a>
+<a class="Keyword" id="478">open</a> <a class="Keyword" id="483">import</a> <a class="Module" href="Function.Equivalence.html" id="490">Function.Equivalence</a>
+<a class="Keyword" id="511">import</a> <a class="Module" href="Algebra.Construct.Subst.Equality.html" id="518">Algebra.Construct.Subst.Equality</a> <a class="Symbol" id="551">as</a> <a class="Module" id="554">SubstEq</a>
+
+<a class="Keyword" id="563">module</a> <a class="Module" href="Algebra.Properties.DistributiveLattice.html" id="570">Algebra.Properties.DistributiveLattice</a>
+  <a class="Symbol" id="611">{</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#612" id="612">ℓ₁</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#615" id="615">ℓ₂</a><a class="Symbol" id="617">}</a> <a class="Symbol" id="619">(</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#620" id="620">DL</a> <a class="Symbol" id="623">:</a> <a class="Record" href="Algebra.Lattice.Bundles.html#4964" id="625">DistributiveLattice</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#612" id="645">ℓ₁</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#615" id="648">ℓ₂</a><a class="Symbol" id="650">)</a>
+  <a class="Keyword" id="654">where</a>
+
+<a class="Symbol" id="661">{-#</a> <a class="Keyword" id="665">WARNING_ON_IMPORT</a>
+<a class="String" id="683">"Algebra.Properties.DistributiveLattice was deprecated in v2.0.
+Use Algebra.Lattice.Properties.DistributiveLattice instead."</a>
+<a class="Symbol" id="808">#-}</a>
+
+<a class="Keyword" id="813">open</a> <a class="Module" href="Algebra.Lattice.Bundles.html#4964" id="818">DistributiveLattice</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#620" id="838">DL</a>
+<a class="Keyword" id="841">open</a> <a class="Keyword" id="846">import</a> <a class="Module" href="Algebra.Lattice.Properties.DistributiveLattice.html" id="853">Algebra.Lattice.Properties.DistributiveLattice</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#620" id="900">DL</a> <a class="Keyword" id="903">public</a>
+<a class="Keyword" id="910">import</a> <a class="Module" href="Algebra.Properties.Lattice.html" id="917">Algebra.Properties.Lattice</a> <a class="Symbol" id="944">as</a> <a class="Module" id="947">LatticeProperties</a>
+
+<a class="Comment" id="966">------------------------------------------------------------------------</a>
+<a class="Comment" id="1039">-- DEPRECATED NAMES</a>
+<a class="Comment" id="1059">------------------------------------------------------------------------</a>
+<a class="Comment" id="1132">-- Please use the new names as continuing support for the old names is</a>
+<a class="Comment" id="1203">-- not guaranteed.</a>
+
+<a class="Comment" id="1223">-- Version 1.1</a>
+
+<a id="∨-∧-distribˡ"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1239" id="1239">∨-∧-distribˡ</a> <a class="Symbol" id="1252">=</a> <a class="Function" href="Algebra.Lattice.Structures.html#4963" id="1254">∨-distribˡ-∧</a>
+<a class="Symbol" id="1267">{-#</a> <a class="Keyword" id="1271">WARNING_ON_USAGE</a> <a class="Pragma" id="1288">∨-∧-distribˡ</a>
+<a class="String" id="1301">"Warning: ∨-∧-distribˡ was deprecated in v1.1.
+Please use ∨-distribˡ-∧ instead."</a>
+<a class="Symbol" id="1382">#-}</a>
+<a id="∨-∧-distrib"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1386" id="1386">∨-∧-distrib</a> <a class="Symbol" id="1398">=</a> <a class="Function" href="Algebra.Lattice.Structures.html#4853" id="1400">∨-distrib-∧</a>
+<a class="Symbol" id="1412">{-#</a> <a class="Keyword" id="1416">WARNING_ON_USAGE</a> <a class="Pragma" id="1433">∨-∧-distrib</a>
+<a class="String" id="1445">"Warning: ∨-∧-distrib was deprecated in v1.1.
+Please use ∨-distrib-∧ instead."</a>
+<a class="Symbol" id="1524">#-}</a>
+<a id="∧-∨-distribˡ"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1528" id="1528">∧-∨-distribˡ</a> <a class="Symbol" id="1541">=</a> <a class="Function" href="Algebra.Lattice.Structures.html#5111" id="1543">∧-distribˡ-∨</a>
+<a class="Symbol" id="1556">{-#</a> <a class="Keyword" id="1560">WARNING_ON_USAGE</a> <a class="Pragma" id="1577">∧-∨-distribˡ</a>
+<a class="String" id="1590">"Warning: ∧-∨-distribˡ was deprecated in v1.1.
+Please use ∧-distribˡ-∨ instead."</a>
+<a class="Symbol" id="1671">#-}</a>
+<a id="∧-∨-distribʳ"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1675" id="1675">∧-∨-distribʳ</a> <a class="Symbol" id="1688">=</a> <a class="Function" href="Algebra.Lattice.Structures.html#5185" id="1690">∧-distribʳ-∨</a>
+<a class="Symbol" id="1703">{-#</a> <a class="Keyword" id="1707">WARNING_ON_USAGE</a> <a class="Pragma" id="1724">∧-∨-distribʳ</a>
+<a class="String" id="1737">"Warning: ∧-∨-distribʳ was deprecated in v1.1.
+Please use ∧-distribʳ-∨ instead."</a>
+<a class="Symbol" id="1818">#-}</a>
+<a id="∧-∨-distrib"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1822" id="1822">∧-∨-distrib</a> <a class="Symbol" id="1834">=</a> <a class="Function" href="Algebra.Lattice.Structures.html#4891" id="1836">∧-distrib-∨</a>
+<a class="Symbol" id="1848">{-#</a> <a class="Keyword" id="1852">WARNING_ON_USAGE</a> <a class="Pragma" id="1869">∧-∨-distrib</a>
+<a class="String" id="1881">"Warning: ∧-∨-distrib was deprecated in v1.1.
+Please use ∧-distrib-∨ instead."</a>
+<a class="Symbol" id="1960">#-}</a>
+
+<a class="Comment" id="1965">-- Version 1.4</a>
+
+<a id="replace-equality"></a><a class="Function" href="Algebra.Properties.DistributiveLattice.html#1981" id="1981">replace-equality</a> <a class="Symbol" id="1998">:</a> <a class="Symbol" id="2000">{</a><a class="Bound Operator" href="Algebra.Properties.DistributiveLattice.html#2001" id="2001">_≈′_</a> <a class="Symbol" id="2006">:</a> <a class="Function" href="Relation.Binary.Core.html#882" id="2008">Rel</a> <a class="Field" href="Algebra.Lattice.Bundles.html#5071" id="2012">Carrier</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#615" id="2020">ℓ₂</a><a class="Symbol" id="2022">}</a> <a class="Symbol" id="2024">→</a>
+                   <a class="Symbol" id="2045">(∀</a> <a class="Symbol" id="2048">{</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2049" id="2049">x</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2051" id="2051">y</a><a class="Symbol" id="2052">}</a> <a class="Symbol" id="2054">→</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2049" id="2056">x</a> <a class="Field Operator" href="Algebra.Lattice.Bundles.html#5105" id="2058">≈</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2051" id="2060">y</a> <a class="Function Operator" href="Function.Equivalence.html#1204" id="2062">⇔</a> <a class="Symbol" id="2064">(</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2049" id="2065">x</a> <a class="Bound Operator" href="Algebra.Properties.DistributiveLattice.html#2001" id="2067">≈′</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2051" id="2070">y</a><a class="Symbol" id="2071">))</a> <a class="Symbol" id="2074">→</a>
+                   <a class="Record" href="Algebra.Lattice.Bundles.html#4964" id="2095">DistributiveLattice</a> <a class="Symbol" id="2115">_</a> <a class="Symbol" id="2117">_</a>
+<a class="Function" href="Algebra.Properties.DistributiveLattice.html#1981" id="2119">replace-equality</a> <a class="Symbol" id="2136">{</a><a class="Bound Operator" href="Algebra.Properties.DistributiveLattice.html#2137" id="2137">_≈′_</a><a class="Symbol" id="2141">}</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2143" id="2143">≈⇔≈′</a> <a class="Symbol" id="2148">=</a> <a class="Keyword" id="2150">record</a>
+  <a class="Symbol" id="2159">{</a> <a class="Field" href="Algebra.Lattice.Bundles.html#5227" id="2161">isDistributiveLattice</a> <a class="Symbol" id="2183">=</a> <a class="Function" href="Algebra.Lattice.Structures.Biased.html#2925" id="2185">isDistributiveLatticeʳʲᵐ</a> <a class="Symbol" id="2210">(</a><a class="Keyword" id="2211">record</a>
+    <a class="Symbol" id="2222">{</a> <a class="Field" href="Algebra.Lattice.Structures.Biased.html#2497" id="2224">isLattice</a>    <a class="Symbol" id="2237">=</a> <a class="Field" href="Algebra.Lattice.Bundles.html#4584" id="2239">Lattice.isLattice</a>
+                       <a class="Symbol" id="2280">(</a><a class="Function" href="Algebra.Properties.Lattice.html#1790" id="2281">LatticeProperties.replace-equality</a> <a class="Function" href="Algebra.Lattice.Bundles.html#5347" id="2316">lattice</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2143" id="2324">≈⇔≈′</a><a class="Symbol" id="2328">)</a>
+    <a class="Symbol" id="2334">;</a> <a class="Field" href="Algebra.Lattice.Structures.Biased.html#2530" id="2336">∨-distribʳ-∧</a> <a class="Symbol" id="2349">=</a> <a class="Symbol" id="2351">λ</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2353" id="2353">x</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2355" id="2355">y</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2357" id="2357">z</a> <a class="Symbol" id="2359">→</a> <a class="Function" href="Function.Equivalence.html#979" id="2361">to</a> <a class="Field Operator" href="Function.Equality.html#1064" id="2364">⟨$⟩</a> <a class="Function" href="Algebra.Lattice.Structures.html#5037" id="2368">∨-distribʳ-∧</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2353" id="2381">x</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2355" id="2383">y</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2357" id="2385">z</a>
+    <a class="Symbol" id="2391">})</a>
+  <a class="Symbol" id="2396">}</a> <a class="Keyword" id="2398">where</a> <a class="Keyword" id="2404">open</a> <a class="Keyword" id="2409">module</a> <a class="Module" href="Algebra.Properties.DistributiveLattice.html#2416" id="2416">E</a> <a class="Symbol" id="2418">{</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2419" id="2419">x</a> <a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2421" id="2421">y</a><a class="Symbol" id="2422">}</a> <a class="Symbol" id="2424">=</a> <a class="Module" href="Function.Equivalence.html#829" id="2426">Equivalence</a> <a class="Symbol" id="2438">(</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2143" id="2439">≈⇔≈′</a> <a class="Symbol" id="2444">{</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2419" id="2445">x</a><a class="Symbol" id="2446">}</a> <a class="Symbol" id="2448">{</a><a class="Bound" href="Algebra.Properties.DistributiveLattice.html#2421" id="2449">y</a><a class="Symbol" id="2450">})</a>
+<a class="Symbol" id="2453">{-#</a> <a class="Keyword" id="2457">WARNING_ON_USAGE</a> <a class="Pragma" id="2474">replace-equality</a>
+<a class="String" id="2491">"Warning: replace-equality was deprecated in v1.4.
+Please use isDistributiveLattice from `Algebra.Construct.Subst.Equality` instead."</a>
+<a class="Symbol" id="2625">#-}</a>
+</pre></div></body></html>

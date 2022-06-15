@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Data.Empty.Polymorphic</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Level polymorphic Empty type</a>
+<a class="Comment" id="138">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="212">{-#</a> <a class="Keyword" id="216">OPTIONS</a> <a class="Pragma" id="224">--without-K</a> <a class="Pragma" id="236">--safe</a> <a class="Symbol" id="243">#-}</a>
+
+<a class="Keyword" id="248">module</a> <a class="Module" href="Data.Empty.Polymorphic.html" id="255">Data.Empty.Polymorphic</a> <a class="Keyword" id="278">where</a>
+
+<a class="Keyword" id="285">import</a> <a class="Module" href="Data.Empty.html" id="292">Data.Empty</a> <a class="Symbol" id="303">as</a> <a class="Module" id="306">Empty</a>
+<a class="Keyword" id="312">open</a> <a class="Keyword" id="317">import</a> <a class="Module" href="Level.html" id="324">Level</a>
+
+<a id="⊥"></a><a class="Function" href="Data.Empty.Polymorphic.html#331" id="331">⊥</a> <a class="Symbol" id="333">:</a> <a class="Symbol" id="335">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#336" id="336">ℓ</a> <a class="Symbol" id="338">:</a> <a class="Postulate" href="Agda.Primitive.html#597" id="340">Level</a><a class="Symbol" id="345">}</a> <a class="Symbol" id="347">→</a> <a class="Primitive" href="Agda.Primitive.html#326" id="349">Set</a> <a class="Bound" href="Data.Empty.Polymorphic.html#336" id="353">ℓ</a>
+<a class="Function" href="Data.Empty.Polymorphic.html#331" id="355">⊥</a> <a class="Symbol" id="357">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#358" id="358">ℓ</a><a class="Symbol" id="359">}</a> <a class="Symbol" id="361">=</a> <a class="Record" href="Level.html#400" id="363">Lift</a> <a class="Bound" href="Data.Empty.Polymorphic.html#358" id="368">ℓ</a> <a class="Datatype" href="Data.Empty.html#526" id="370">Empty.⊥</a>
+
+<a class="Comment" id="379">-- make ⊥-elim dependent too, as it does seem useful</a>
+<a id="⊥-elim"></a><a class="Function" href="Data.Empty.Polymorphic.html#432" id="432">⊥-elim</a> <a class="Symbol" id="439">:</a> <a class="Symbol" id="441">∀</a> <a class="Symbol" id="443">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#444" id="444">w</a> <a class="Bound" href="Data.Empty.Polymorphic.html#446" id="446">ℓ</a><a class="Symbol" id="447">}</a> <a class="Symbol" id="449">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#450" id="450">Whatever</a> <a class="Symbol" id="459">:</a> <a class="Function" href="Data.Empty.Polymorphic.html#331" id="461">⊥</a> <a class="Symbol" id="463">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#446" id="464">ℓ</a><a class="Symbol" id="465">}</a> <a class="Symbol" id="467">→</a> <a class="Primitive" href="Agda.Primitive.html#326" id="469">Set</a> <a class="Bound" href="Data.Empty.Polymorphic.html#444" id="473">w</a><a class="Symbol" id="474">}</a> <a class="Symbol" id="476">→</a> <a class="Symbol" id="478">(</a><a class="Bound" href="Data.Empty.Polymorphic.html#479" id="479">witness</a> <a class="Symbol" id="487">:</a> <a class="Function" href="Data.Empty.Polymorphic.html#331" id="489">⊥</a> <a class="Symbol" id="491">{</a><a class="Bound" href="Data.Empty.Polymorphic.html#446" id="492">ℓ</a><a class="Symbol" id="493">})</a> <a class="Symbol" id="496">→</a> <a class="Bound" href="Data.Empty.Polymorphic.html#450" id="498">Whatever</a> <a class="Bound" href="Data.Empty.Polymorphic.html#479" id="507">witness</a>
+<a class="Function" href="Data.Empty.Polymorphic.html#432" id="515">⊥-elim</a> <a class="Symbol" id="522">()</a>
+</pre></div></body></html>

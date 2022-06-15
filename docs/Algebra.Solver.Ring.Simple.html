@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Algebra.Solver.Ring.Simple</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Instantiates the ring solver with two copies of the same ring with</a>
+<a class="Comment" id="176">-- decidable equality</a>
+<a class="Comment" id="198">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="272">{-#</a> <a class="Keyword" id="276">OPTIONS</a> <a class="Pragma" id="284">--without-K</a> <a class="Pragma" id="296">--safe</a> <a class="Symbol" id="303">#-}</a>
+
+<a class="Keyword" id="308">open</a> <a class="Keyword" id="313">import</a> <a class="Module" href="Algebra.Solver.Ring.AlmostCommutativeRing.html" id="320">Algebra.Solver.Ring.AlmostCommutativeRing</a>
+<a class="Keyword" id="362">open</a> <a class="Keyword" id="367">import</a> <a class="Module" href="Relation.Binary.html" id="374">Relation.Binary</a>
+<a class="Keyword" id="390">open</a> <a class="Keyword" id="395">import</a> <a class="Module" href="Relation.Binary.Consequences.html" id="402">Relation.Binary.Consequences</a> <a class="Keyword" id="431">using</a> <a class="Symbol" id="437">(</a><a class="Function" href="Relation.Binary.Consequences.html#5855" id="438">dec⇒weaklyDec</a><a class="Symbol" id="451">)</a>
+
+<a class="Keyword" id="454">module</a> <a class="Module" href="Algebra.Solver.Ring.Simple.html" id="461">Algebra.Solver.Ring.Simple</a>
+  <a class="Symbol" id="490">{</a><a class="Bound" href="Algebra.Solver.Ring.Simple.html#491" id="491">r₁</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#494" id="494">r₂</a><a class="Symbol" id="496">}</a> <a class="Symbol" id="498">(</a><a class="Bound" href="Algebra.Solver.Ring.Simple.html#499" id="499">R</a> <a class="Symbol" id="501">:</a> <a class="Record" href="Algebra.Solver.Ring.AlmostCommutativeRing.html#1162" id="503">AlmostCommutativeRing</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#491" id="525">r₁</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#494" id="528">r₂</a><a class="Symbol" id="530">)</a>
+  <a class="Symbol" id="534">(</a><a class="Bound Operator" href="Algebra.Solver.Ring.Simple.html#535" id="535">_≟_</a> <a class="Symbol" id="539">:</a> <a class="Function" href="Relation.Binary.Definitions.html#4575" id="541">Decidable</a> <a class="Symbol" id="551">(</a><a class="Field Operator" href="Algebra.Solver.Ring.AlmostCommutativeRing.html#1321" id="552">AlmostCommutativeRing._≈_</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#499" id="578">R</a><a class="Symbol" id="579">))</a>
+  <a class="Keyword" id="584">where</a>
+
+<a class="Keyword" id="591">open</a> <a class="Module" href="Algebra.Solver.Ring.AlmostCommutativeRing.html#1162" id="596">AlmostCommutativeRing</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#499" id="618">R</a>
+<a class="Keyword" id="620">import</a> <a class="Module" href="Algebra.Solver.Ring.html" id="627">Algebra.Solver.Ring</a> <a class="Symbol" id="647">as</a> <a class="Module" id="650">RS</a>
+<a class="Keyword" id="653">open</a> <a class="Module" href="Algebra.Solver.Ring.html" id="658">RS</a> <a class="Function" href="Algebra.Solver.Ring.AlmostCommutativeRing.html#2078" id="661">rawRing</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#499" id="669">R</a> <a class="Symbol" id="671">(</a><a class="Function" href="Algebra.Solver.Ring.AlmostCommutativeRing.html#2818" id="672">-raw-almostCommutative⟶</a> <a class="Bound" href="Algebra.Solver.Ring.Simple.html#499" id="696">R</a><a class="Symbol" id="697">)</a> <a class="Symbol" id="699">(</a><a class="Function" href="Relation.Binary.Consequences.html#5855" id="700">dec⇒weaklyDec</a> <a class="Bound Operator" href="Algebra.Solver.Ring.Simple.html#535" id="714">_≟_</a><a class="Symbol" id="717">)</a> <a class="Keyword" id="719">public</a>
+</pre></div></body></html>

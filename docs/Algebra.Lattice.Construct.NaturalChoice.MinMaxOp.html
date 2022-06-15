@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Algebra.Lattice.Construct.NaturalChoice.MinMaxOp</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Properties of min and max operators specified over a total preorder.</a>
+<a class="Comment" id="178">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="252">{-#</a> <a class="Keyword" id="256">OPTIONS</a> <a class="Pragma" id="264">--without-K</a> <a class="Pragma" id="276">--safe</a> <a class="Symbol" id="283">#-}</a>
+
+<a class="Keyword" id="288">open</a> <a class="Keyword" id="293">import</a> <a class="Module" href="Algebra.Lattice.Bundles.html" id="300">Algebra.Lattice.Bundles</a>
+<a class="Keyword" id="324">open</a> <a class="Keyword" id="329">import</a> <a class="Module" href="Algebra.Construct.NaturalChoice.Base.html" id="336">Algebra.Construct.NaturalChoice.Base</a>
+<a class="Keyword" id="373">open</a> <a class="Keyword" id="378">import</a> <a class="Module" href="Relation.Binary.html" id="385">Relation.Binary</a>
+
+<a class="Keyword" id="402">module</a> <a class="Module" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html" id="409">Algebra.Lattice.Construct.NaturalChoice.MinMaxOp</a>
+  <a class="Symbol" id="460">{</a><a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#461" id="461">a</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#463" id="463">ℓ₁</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#466" id="466">ℓ₂</a><a class="Symbol" id="468">}</a> <a class="Symbol" id="470">{</a><a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#471" id="471">O</a> <a class="Symbol" id="473">:</a> <a class="Record" href="Relation.Binary.Bundles.html#2375" id="475">TotalPreorder</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#461" id="489">a</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#463" id="491">ℓ₁</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#466" id="494">ℓ₂</a><a class="Symbol" id="496">}</a>
+  <a class="Symbol" id="500">(</a><a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#501" id="501">minOp</a> <a class="Symbol" id="507">:</a> <a class="Record" href="Algebra.Construct.NaturalChoice.Base.html#946" id="509">MinOperator</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#471" id="521">O</a><a class="Symbol" id="522">)</a>
+  <a class="Symbol" id="526">(</a><a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#527" id="527">maxOp</a> <a class="Symbol" id="533">:</a> <a class="Record" href="Algebra.Construct.NaturalChoice.Base.html#1147" id="535">MaxOperator</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#471" id="547">O</a><a class="Symbol" id="548">)</a>
+  <a class="Keyword" id="552">where</a>
+
+<a class="Keyword" id="559">open</a> <a class="Module" href="Relation.Binary.Bundles.html#2375" id="564">TotalPreorder</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#471" id="578">O</a>
+<a class="Keyword" id="580">open</a> <a class="Module" href="Algebra.Construct.NaturalChoice.Base.html#946" id="585">MinOperator</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#501" id="597">minOp</a>
+<a class="Keyword" id="603">open</a> <a class="Module" href="Algebra.Construct.NaturalChoice.Base.html#1147" id="608">MaxOperator</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#527" id="620">maxOp</a>
+
+<a class="Keyword" id="627">open</a> <a class="Keyword" id="632">import</a> <a class="Module" href="Algebra.Lattice.Structures.html" id="639">Algebra.Lattice.Structures</a> <a class="Function Operator" href="Relation.Binary.Bundles.html#2487" id="666">_≈_</a>
+<a class="Keyword" id="670">open</a> <a class="Keyword" id="675">import</a> <a class="Module" href="Algebra.Construct.NaturalChoice.MinMaxOp.html" id="682">Algebra.Construct.NaturalChoice.MinMaxOp</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#501" id="723">minOp</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#527" id="729">maxOp</a>
+<a class="Keyword" id="735">open</a> <a class="Keyword" id="740">import</a> <a class="Module" href="Relation.Binary.Reasoning.Preorder.html" id="747">Relation.Binary.Reasoning.Preorder</a> <a class="Function" href="Relation.Binary.Bundles.html#2723" id="782">preorder</a>
+
+<a class="Comment" id="792">------------------------------------------------------------------------</a>
+<a class="Comment" id="865">-- Re-export properties of individual operators</a>
+
+<a class="Keyword" id="914">open</a> <a class="Keyword" id="919">import</a> <a class="Module" href="Algebra.Lattice.Construct.NaturalChoice.MinOp.html" id="926">Algebra.Lattice.Construct.NaturalChoice.MinOp</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#501" id="972">minOp</a> <a class="Keyword" id="978">public</a>
+<a class="Keyword" id="985">open</a> <a class="Keyword" id="990">import</a> <a class="Module" href="Algebra.Lattice.Construct.NaturalChoice.MaxOp.html" id="997">Algebra.Lattice.Construct.NaturalChoice.MaxOp</a> <a class="Bound" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#527" id="1043">maxOp</a> <a class="Keyword" id="1049">public</a>
+
+<a class="Comment" id="1057">------------------------------------------------------------------------</a>
+<a class="Comment" id="1130">-- Structures</a>
+
+<a id="⊔-⊓-isLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1145" id="1145">⊔-⊓-isLattice</a> <a class="Symbol" id="1159">:</a> <a class="Record" href="Algebra.Lattice.Structures.html#4004" id="1161">IsLattice</a> <a class="Field Operator" href="Algebra.Construct.NaturalChoice.Base.html#1222" id="1171">_⊔_</a> <a class="Function Operator" href="Algebra.Construct.NaturalChoice.Base.html#1021" id="1175">_⊓_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1145" id="1179">⊔-⊓-isLattice</a> <a class="Symbol" id="1193">=</a> <a class="Keyword" id="1195">record</a>
+  <a class="Symbol" id="1204">{</a> <a class="Field" href="Algebra.Lattice.Structures.html#4060" id="1206">isEquivalence</a> <a class="Symbol" id="1220">=</a> <a class="Function" href="Relation.Binary.Structures.html#2228" id="1222">isEquivalence</a>
+  <a class="Symbol" id="1238">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4098" id="1240">∨-comm</a>        <a class="Symbol" id="1254">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#1105" id="1256">⊔-comm</a>
+  <a class="Symbol" id="1265">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4132" id="1267">∨-assoc</a>       <a class="Symbol" id="1281">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#1076" id="1283">⊔-assoc</a>
+  <a class="Symbol" id="1293">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4166" id="1295">∨-cong</a>        <a class="Symbol" id="1309">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#935" id="1311">⊔-cong</a>
+  <a class="Symbol" id="1320">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4199" id="1322">∧-comm</a>        <a class="Symbol" id="1336">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#1550" id="1338">⊓-comm</a>
+  <a class="Symbol" id="1347">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4233" id="1349">∧-assoc</a>       <a class="Symbol" id="1363">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#2352" id="1365">⊓-assoc</a>
+  <a class="Symbol" id="1375">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4267" id="1377">∧-cong</a>        <a class="Symbol" id="1391">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#2239" id="1393">⊓-cong</a>
+  <a class="Symbol" id="1402">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4300" id="1404">absorptive</a>    <a class="Symbol" id="1418">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#3274" id="1420">⊔-⊓-absorptive</a>
+  <a class="Symbol" id="1437">}</a>
+
+<a id="⊓-⊔-isLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1440" id="1440">⊓-⊔-isLattice</a> <a class="Symbol" id="1454">:</a> <a class="Record" href="Algebra.Lattice.Structures.html#4004" id="1456">IsLattice</a> <a class="Function Operator" href="Algebra.Construct.NaturalChoice.Base.html#1021" id="1466">_⊓_</a> <a class="Field Operator" href="Algebra.Construct.NaturalChoice.Base.html#1222" id="1470">_⊔_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1440" id="1474">⊓-⊔-isLattice</a> <a class="Symbol" id="1488">=</a> <a class="Keyword" id="1490">record</a>
+  <a class="Symbol" id="1499">{</a> <a class="Field" href="Algebra.Lattice.Structures.html#4060" id="1501">isEquivalence</a> <a class="Symbol" id="1515">=</a> <a class="Function" href="Relation.Binary.Structures.html#2228" id="1517">isEquivalence</a>
+  <a class="Symbol" id="1533">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4098" id="1535">∨-comm</a>        <a class="Symbol" id="1549">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#1550" id="1551">⊓-comm</a>
+  <a class="Symbol" id="1560">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4132" id="1562">∨-assoc</a>       <a class="Symbol" id="1576">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#2352" id="1578">⊓-assoc</a>
+  <a class="Symbol" id="1588">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4166" id="1590">∨-cong</a>        <a class="Symbol" id="1604">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinOp.html#2239" id="1606">⊓-cong</a>
+  <a class="Symbol" id="1615">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4199" id="1617">∧-comm</a>        <a class="Symbol" id="1631">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#1105" id="1633">⊔-comm</a>
+  <a class="Symbol" id="1642">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4233" id="1644">∧-assoc</a>       <a class="Symbol" id="1658">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#1076" id="1660">⊔-assoc</a>
+  <a class="Symbol" id="1670">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4267" id="1672">∧-cong</a>        <a class="Symbol" id="1686">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MaxOp.html#935" id="1688">⊔-cong</a>
+  <a class="Symbol" id="1697">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4300" id="1699">absorptive</a>    <a class="Symbol" id="1713">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#3354" id="1715">⊓-⊔-absorptive</a>
+  <a class="Symbol" id="1732">}</a>
+
+<a id="⊓-⊔-isDistributiveLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1735" id="1735">⊓-⊔-isDistributiveLattice</a> <a class="Symbol" id="1761">:</a> <a class="Record" href="Algebra.Lattice.Structures.html#4753" id="1763">IsDistributiveLattice</a> <a class="Function Operator" href="Algebra.Construct.NaturalChoice.Base.html#1021" id="1785">_⊓_</a> <a class="Field Operator" href="Algebra.Construct.NaturalChoice.Base.html#1222" id="1789">_⊔_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1735" id="1793">⊓-⊔-isDistributiveLattice</a> <a class="Symbol" id="1819">=</a> <a class="Keyword" id="1821">record</a>
+  <a class="Symbol" id="1830">{</a> <a class="Field" href="Algebra.Lattice.Structures.html#4821" id="1832">isLattice</a>    <a class="Symbol" id="1845">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1440" id="1847">⊓-⊔-isLattice</a>
+  <a class="Symbol" id="1863">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4853" id="1865">∨-distrib-∧</a>  <a class="Symbol" id="1878">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#1985" id="1880">⊓-distrib-⊔</a>
+  <a class="Symbol" id="1894">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4891" id="1896">∧-distrib-∨</a>  <a class="Symbol" id="1909">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#2563" id="1911">⊔-distrib-⊓</a>
+  <a class="Symbol" id="1925">}</a>
+
+<a id="⊔-⊓-isDistributiveLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1928" id="1928">⊔-⊓-isDistributiveLattice</a> <a class="Symbol" id="1954">:</a> <a class="Record" href="Algebra.Lattice.Structures.html#4753" id="1956">IsDistributiveLattice</a> <a class="Field Operator" href="Algebra.Construct.NaturalChoice.Base.html#1222" id="1978">_⊔_</a> <a class="Function Operator" href="Algebra.Construct.NaturalChoice.Base.html#1021" id="1982">_⊓_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1928" id="1986">⊔-⊓-isDistributiveLattice</a> <a class="Symbol" id="2012">=</a> <a class="Keyword" id="2014">record</a>
+  <a class="Symbol" id="2023">{</a> <a class="Field" href="Algebra.Lattice.Structures.html#4821" id="2025">isLattice</a>    <a class="Symbol" id="2038">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1145" id="2040">⊔-⊓-isLattice</a>
+  <a class="Symbol" id="2056">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4853" id="2058">∨-distrib-∧</a>  <a class="Symbol" id="2071">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#2563" id="2073">⊔-distrib-⊓</a>
+  <a class="Symbol" id="2087">;</a> <a class="Field" href="Algebra.Lattice.Structures.html#4891" id="2089">∧-distrib-∨</a>  <a class="Symbol" id="2102">=</a> <a class="Function" href="Algebra.Construct.NaturalChoice.MinMaxOp.html#1985" id="2104">⊓-distrib-⊔</a>
+  <a class="Symbol" id="2118">}</a>
+
+<a class="Comment" id="2121">------------------------------------------------------------------------</a>
+<a class="Comment" id="2194">-- Bundles</a>
+
+<a id="⊔-⊓-lattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2206" id="2206">⊔-⊓-lattice</a> <a class="Symbol" id="2218">:</a> <a class="Record" href="Algebra.Lattice.Bundles.html#4381" id="2220">Lattice</a> <a class="Symbol" id="2228">_</a> <a class="Symbol" id="2230">_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2206" id="2232">⊔-⊓-lattice</a> <a class="Symbol" id="2244">=</a> <a class="Keyword" id="2246">record</a>
+  <a class="Symbol" id="2255">{</a> <a class="Field" href="Algebra.Lattice.Bundles.html#4584" id="2257">isLattice</a> <a class="Symbol" id="2267">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1145" id="2269">⊔-⊓-isLattice</a>
+  <a class="Symbol" id="2285">}</a>
+
+<a id="⊓-⊔-lattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2288" id="2288">⊓-⊔-lattice</a> <a class="Symbol" id="2300">:</a> <a class="Record" href="Algebra.Lattice.Bundles.html#4381" id="2302">Lattice</a> <a class="Symbol" id="2310">_</a> <a class="Symbol" id="2312">_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2288" id="2314">⊓-⊔-lattice</a> <a class="Symbol" id="2326">=</a> <a class="Keyword" id="2328">record</a>
+  <a class="Symbol" id="2337">{</a> <a class="Field" href="Algebra.Lattice.Bundles.html#4584" id="2339">isLattice</a> <a class="Symbol" id="2349">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1440" id="2351">⊓-⊔-isLattice</a>
+  <a class="Symbol" id="2367">}</a>
+
+<a id="⊔-⊓-distributiveLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2370" id="2370">⊔-⊓-distributiveLattice</a> <a class="Symbol" id="2394">:</a> <a class="Record" href="Algebra.Lattice.Bundles.html#4964" id="2396">DistributiveLattice</a> <a class="Symbol" id="2416">_</a> <a class="Symbol" id="2418">_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2370" id="2420">⊔-⊓-distributiveLattice</a> <a class="Symbol" id="2444">=</a> <a class="Keyword" id="2446">record</a>
+  <a class="Symbol" id="2455">{</a> <a class="Field" href="Algebra.Lattice.Bundles.html#5227" id="2457">isDistributiveLattice</a> <a class="Symbol" id="2479">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1928" id="2481">⊔-⊓-isDistributiveLattice</a>
+  <a class="Symbol" id="2509">}</a>
+
+<a id="⊓-⊔-distributiveLattice"></a><a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2512" id="2512">⊓-⊔-distributiveLattice</a> <a class="Symbol" id="2536">:</a> <a class="Record" href="Algebra.Lattice.Bundles.html#4964" id="2538">DistributiveLattice</a> <a class="Symbol" id="2558">_</a> <a class="Symbol" id="2560">_</a>
+<a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#2512" id="2562">⊓-⊔-distributiveLattice</a> <a class="Symbol" id="2586">=</a> <a class="Keyword" id="2588">record</a>
+  <a class="Symbol" id="2597">{</a> <a class="Field" href="Algebra.Lattice.Bundles.html#5227" id="2599">isDistributiveLattice</a> <a class="Symbol" id="2621">=</a> <a class="Function" href="Algebra.Lattice.Construct.NaturalChoice.MinMaxOp.html#1735" id="2623">⊓-⊔-isDistributiveLattice</a>
+  <a class="Symbol" id="2651">}</a>
+</pre></div></body></html>

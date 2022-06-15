@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>An Investigation on Kripke-style Modal Type Theories</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="styling.css" />
+  <script type="text/javascript" src="style.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+   $(function () {
+       $("pre>code").parents("pre").each(function(_) {
+           var pre = this;
+           for (c of pre.children) {
+               c.classList.add(pre.className);
+           }
+       })
+   })
+  
+   $(function() {
+       var h1elem = $("h1")[0];
+       h1elem.classList.add("project_title");
+       var header = $(`<div id="header_wrap" class="outer">
+          <header class="inner">
+            
+              <a id="forkme_banner" href="https://github.com/HuStmpHrrr/popl20-artifact">Fork on GitHub</a>
+            ${h1elem.outerHTML}
+          </header>
+      </div>`);
+       var body = h1elem.parentNode;
+       h1elem.remove();
+       var sec = document.createElement("section");
+       sec.classList.add("inner");
+       sec.innerHTML = body.innerHTML;
+       body.innerHTML = '';
+       body.appendChild(header[0]);
+       body.appendChild(sec);
+   })
+  </script>
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h1 id="an-investigation-on-kripke-style-modal-type-theories">An Investigation on Kripke-style Modal Type Theories</h1>
+<p>This homepage contains the investigation on properties of Kripke-style modal type theories, normalization in particular.</p>
+<h2 id="papers">Paper(s)</h2>
+<ol type="1">
+<li><p>Jason Z. S. Hu and Brigitte Pientka. A Categorical Normalization Proof for the Modal Lambda-Calculus (<strong>MFPS 22</strong>)</p>
+<p><a href="Unbox.README.html">See the code</a></p></li>
+</ol>
+<h2 id="installing-agda">Installing Agda</h2>
+<p>It is recommended to build Agda from source. To do so, one would need to install <code>stack</code>. This can be done via</p>
+<pre class="bash"><code>curl -sSL https://get.haskellstack.org/ | sh</code></pre>
+<p>Then the following script will use <code>stack</code> to install Agda in <code>~/.local/bin/</code>.</p>
+<pre class="bash"><code>git clone https://github.com/agda/agda
+cd agda
+git checkout release-2.6.2.1
+cp stack-8.4.4.yaml stack.yaml # choose your favourite Haskell version
+stack stall # it is going to take a while
+cp ~/.local/bin/agda ~/.local/bin/agda-2.6.2.1
+cp ~/.local/bin/agda-mode ~/.local/bin/agda-mode-2.6.2.1</code></pre>
+<p>If Agda does not run, please check to make sure it is in your PATH.</p>
+</body>
+</html>
