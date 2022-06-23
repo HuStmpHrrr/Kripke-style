@@ -4,6 +4,10 @@
 This homepage contains the investigation on properties of Kripke-style modal type
 theories, normalization in particular. 
 
+Please find the [technical report](https://arxiv.org/abs/2206.07823) for more detailed
+development. Most of our development has been [mechanized](README.html) in safe Agda
+with standard extensions.
+
 ## Paper(s)
 
 1. Jason Z. S. Hu and Brigitte Pientka. A Categorical Normalization Proof for the
