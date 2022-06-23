@@ -1,3 +1,3 @@
-# An Investigation on Kripke-style Modal Type Theories
+# An Investigation of Kripke-style Modal Type Theories
 
 
