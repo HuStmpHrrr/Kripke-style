@@ -1,7 +1,7 @@
 # An Investigation of Kripke-style Modal Type Theories
 
 
-This homepage contains the investigation on properties of Kripke-style modal type
+This homepage contains the investigation of properties of Kripke-style modal type
 theories, normalization in particular. 
 
 Please find the [technical report](https://arxiv.org/abs/2206.07823) for more detailed

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Relation.Binary.Reasoning.PartialSetoid</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Convenient syntax for reasoning with a partial setoid</a>
+<a class="Comment" id="163">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="237">{-#</a> <a class="Keyword" id="241">OPTIONS</a> <a class="Pragma" id="249">--without-K</a> <a class="Pragma" id="261">--safe</a> <a class="Symbol" id="268">#-}</a>
+
+<a class="Keyword" id="273">open</a> <a class="Keyword" id="278">import</a> <a class="Module" href="Relation.Binary.html" id="285">Relation.Binary</a>
+
+<a class="Keyword" id="302">module</a> <a class="Module" href="Relation.Binary.Reasoning.PartialSetoid.html" id="309">Relation.Binary.Reasoning.PartialSetoid</a>
+  <a class="Symbol" id="351">{</a><a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#352" id="352">s₁</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#355" id="355">s₂</a><a class="Symbol" id="357">}</a> <a class="Symbol" id="359">(</a><a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#360" id="360">S</a> <a class="Symbol" id="362">:</a> <a class="Record" href="Relation.Binary.Bundles.html#708" id="364">PartialSetoid</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#352" id="378">s₁</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#355" id="381">s₂</a><a class="Symbol" id="383">)</a> <a class="Keyword" id="385">where</a>
+
+<a class="Keyword" id="392">open</a> <a class="Module" href="Relation.Binary.Bundles.html#708" id="397">PartialSetoid</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#360" id="411">S</a>
+<a class="Keyword" id="413">import</a> <a class="Module" href="Relation.Binary.Reasoning.Base.Partial.html" id="420">Relation.Binary.Reasoning.Base.Partial</a> <a class="Field Operator" href="Relation.Binary.Bundles.html#797" id="459">_≈_</a> <a class="Function" href="Relation.Binary.Structures.html#1198" id="463">trans</a> as <a id="Base"></a><a class="Module" href="Relation.Binary.Reasoning.PartialSetoid.html#472" id="472">Base</a>
+
+<a class="Comment" id="478">------------------------------------------------------------------------</a>
+<a class="Comment" id="551">-- Re-export the contents of the base module</a>
+
+<a class="Keyword" id="597">open</a> <a class="Module" href="Relation.Binary.Reasoning.PartialSetoid.html#472" id="602">Base</a> <a class="Keyword" id="607">public</a>
+  <a class="Keyword" id="616">hiding</a> <a class="Symbol" id="623">(</a><a class="Function" href="Relation.Binary.Reasoning.Base.Partial.html#2501" id="624">step-∼</a><a class="Symbol" id="630">)</a>
+
+<a class="Comment" id="633">------------------------------------------------------------------------</a>
+<a class="Comment" id="706">-- Additional reasoning combinators</a>
+
+<a class="Keyword" id="743">infixr</a> <a class="Number" id="750">2</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#797" id="752">step-≈</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#898" id="759">step-≈˘</a>
+
+<a class="Comment" id="768">-- A step using an equality</a>
+
+<a id="step-≈"></a><a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#797" id="797">step-≈</a> <a class="Symbol" id="804">=</a> <a class="Function" href="Relation.Binary.Reasoning.Base.Partial.html#2501" id="806">Base.step-∼</a>
+<a class="Keyword" id="818">syntax</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#797" id="825">step-≈</a> <a class="Bound" id="832">x</a> <a class="Bound" id="834">y≈z</a> <a class="Bound" id="838">x≈y</a> <a class="Symbol" id="842">=</a> <a class="Bound" id="844">x</a> <a class="Function" id="846">≈⟨</a> <a class="Bound" id="849">x≈y</a> <a class="Function" id="853">⟩</a> <a class="Bound" id="855">y≈z</a>
+
+<a class="Comment" id="860">-- A step using a symmetric equality</a>
+
+<a id="step-≈˘"></a><a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#898" id="898">step-≈˘</a> <a class="Symbol" id="906">:</a> <a class="Symbol" id="908">∀</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#910" id="910">x</a> <a class="Symbol" id="912">{</a><a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#913" id="913">y</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#915" id="915">z</a><a class="Symbol" id="916">}</a> <a class="Symbol" id="918">→</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#913" id="920">y</a> <a class="Datatype Operator" href="Relation.Binary.Reasoning.Base.Partial.html#947" id="922">IsRelatedTo</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#915" id="934">z</a> <a class="Symbol" id="936">→</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#913" id="938">y</a> <a class="Field Operator" href="Relation.Binary.Bundles.html#797" id="940">≈</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#910" id="942">x</a> <a class="Symbol" id="944">→</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#910" id="946">x</a> <a class="Datatype Operator" href="Relation.Binary.Reasoning.Base.Partial.html#947" id="948">IsRelatedTo</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#915" id="960">z</a>
+<a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#898" id="962">step-≈˘</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#970" id="970">x</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#972" id="972">y∼z</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#976" id="976">y≈x</a> <a class="Symbol" id="980">=</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#970" id="982">x</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#797" id="984">≈⟨</a> <a class="Function" href="Relation.Binary.Structures.html#1172" id="987">sym</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#976" id="991">y≈x</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#797" id="995">⟩</a> <a class="Bound" href="Relation.Binary.Reasoning.PartialSetoid.html#972" id="997">y∼z</a>
+<a class="Keyword" id="1001">syntax</a> <a class="Function" href="Relation.Binary.Reasoning.PartialSetoid.html#898" id="1008">step-≈˘</a> <a class="Bound" id="1016">x</a> <a class="Bound" id="1018">y≈z</a> <a class="Bound" id="1022">y≈x</a> <a class="Symbol" id="1026">=</a> <a class="Bound" id="1028">x</a> <a class="Function" id="1030">≈˘⟨</a> <a class="Bound" id="1034">y≈x</a> <a class="Function" id="1038">⟩</a> <a class="Bound" id="1040">y≈z</a>
+</pre></div></body></html>
