@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>IO.Finite</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- IO only involving finite objects</a>
+<a class="Comment" id="142">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="216">{-#</a> <a class="Keyword" id="220">OPTIONS</a> <a class="Pragma" id="228">--without-K</a> <a class="Pragma" id="240">--guardedness</a> <a class="Symbol" id="254">#-}</a>
+
+<a class="Keyword" id="259">module</a> <a class="Module" href="IO.Finite.html" id="266">IO.Finite</a> <a class="Keyword" id="276">where</a>
+
+<a class="Keyword" id="283">open</a> <a class="Keyword" id="288">import</a> <a class="Module" href="Data.Unit.Polymorphic.Base.html" id="295">Data.Unit.Polymorphic.Base</a>
+<a class="Keyword" id="322">open</a> <a class="Keyword" id="327">import</a> <a class="Module" href="Agda.Builtin.String.html" id="334">Agda.Builtin.String</a>
+<a class="Keyword" id="354">import</a> <a class="Module" href="Data.Unit.Base.html" id="361">Data.Unit.Base</a> <a class="Symbol" id="376">as</a> <a class="Module" id="379">Unit0</a>
+<a class="Keyword" id="385">open</a> <a class="Keyword" id="390">import</a> <a class="Module" href="IO.Base.html" id="397">IO.Base</a>
+<a class="Keyword" id="405">import</a> <a class="Module" href="IO.Primitive.html" id="412">IO.Primitive</a> <a class="Symbol" id="425">as</a> <a class="Module" id="428">Prim</a>
+<a class="Keyword" id="433">import</a> <a class="Module" href="IO.Primitive.Finite.html" id="440">IO.Primitive.Finite</a> <a class="Symbol" id="460">as</a> <a class="Module" id="463">Prim</a>
+<a class="Keyword" id="468">open</a> <a class="Keyword" id="473">import</a> <a class="Module" href="Level.html" id="480">Level</a>
+
+<a class="Keyword" id="487">private</a>
+  <a class="Keyword" id="497">variable</a>
+    <a class="Generalizable" href="IO.Finite.html#510" id="510">a</a> <a class="Symbol" id="512">:</a> <a class="Postulate" href="Agda.Primitive.html#597" id="514">Level</a>
+
+<a class="Comment" id="521">------------------------------------------------------------------------</a>
+<a class="Comment" id="594">-- Simple lazy IO</a>
+
+<a class="Comment" id="613">-- Note that the functions below produce commands which, when</a>
+<a class="Comment" id="675">-- executed, may raise exceptions.</a>
+
+<a class="Comment" id="711">-- Note also that the semantics of these functions depends on the</a>
+<a class="Comment" id="777">-- version of the Haskell base library. If the version is 4.2.0.0 (or</a>
+<a class="Comment" id="847">-- later?), then the functions use the character encoding specified by</a>
+<a class="Comment" id="918">-- the locale. For older versions of the library (going back to at</a>
+<a class="Comment" id="985">-- least version 3) the functions use ISO-8859-1.</a>
+
+<a id="getLine"></a><a class="Function" href="IO.Finite.html#1036" id="1036">getLine</a> <a class="Symbol" id="1044">:</a> <a class="Datatype" href="IO.Base.html#1121" id="1046">IO</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1049">String</a>
+<a class="Function" href="IO.Finite.html#1036" id="1056">getLine</a> <a class="Symbol" id="1064">=</a> <a class="InductiveConstructor" href="IO.Base.html#1158" id="1066">lift</a> <a class="Postulate" href="IO.Primitive.Finite.html#1078" id="1071">Prim.getLine</a>
+
+<a class="Comment" id="1085">-- Reads a finite file. Raises an exception if the file path refers to</a>
+<a class="Comment" id="1156">-- a non-physical file (like "/dev/zero").</a>
+
+<a id="readFile"></a><a class="Function" href="IO.Finite.html#1200" id="1200">readFile</a> <a class="Symbol" id="1209">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1211">String</a> <a class="Symbol" id="1218">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1220">IO</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1223">String</a>
+<a class="Function" href="IO.Finite.html#1200" id="1230">readFile</a> <a class="Bound" href="IO.Finite.html#1239" id="1239">f</a> <a class="Symbol" id="1241">=</a> <a class="InductiveConstructor" href="IO.Base.html#1158" id="1243">lift</a> <a class="Symbol" id="1248">(</a><a class="Postulate" href="IO.Primitive.Finite.html#1104" id="1249">Prim.readFile</a> <a class="Bound" href="IO.Finite.html#1239" id="1263">f</a><a class="Symbol" id="1264">)</a>
+
+<a id="writeFile"></a><a class="Function" href="IO.Finite.html#1267" id="1267">writeFile</a> <a class="Symbol" id="1277">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1279">String</a> <a class="Symbol" id="1286">→</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1288">String</a> <a class="Symbol" id="1295">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1297">IO</a> <a class="Symbol" id="1300">{</a><a class="Generalizable" href="IO.Finite.html#510" id="1301">a</a><a class="Symbol" id="1302">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1304">⊤</a>
+<a class="Function" href="IO.Finite.html#1267" id="1306">writeFile</a> <a class="Bound" href="IO.Finite.html#1316" id="1316">f</a> <a class="Bound" href="IO.Finite.html#1318" id="1318">s</a> <a class="Symbol" id="1320">=</a> <a class="Function" href="IO.Base.html#3138" id="1322">lift′</a> <a class="Symbol" id="1328">(</a><a class="Postulate" href="IO.Primitive.Finite.html#1139" id="1329">Prim.writeFile</a> <a class="Bound" href="IO.Finite.html#1316" id="1344">f</a> <a class="Bound" href="IO.Finite.html#1318" id="1346">s</a><a class="Symbol" id="1347">)</a>
+
+<a id="appendFile"></a><a class="Function" href="IO.Finite.html#1350" id="1350">appendFile</a> <a class="Symbol" id="1361">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1363">String</a> <a class="Symbol" id="1370">→</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1372">String</a> <a class="Symbol" id="1379">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1381">IO</a> <a class="Symbol" id="1384">{</a><a class="Generalizable" href="IO.Finite.html#510" id="1385">a</a><a class="Symbol" id="1386">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1388">⊤</a>
+<a class="Function" href="IO.Finite.html#1350" id="1390">appendFile</a> <a class="Bound" href="IO.Finite.html#1401" id="1401">f</a> <a class="Bound" href="IO.Finite.html#1403" id="1403">s</a> <a class="Symbol" id="1405">=</a> <a class="Function" href="IO.Base.html#3138" id="1407">lift′</a> <a class="Symbol" id="1413">(</a><a class="Postulate" href="IO.Primitive.Finite.html#1181" id="1414">Prim.appendFile</a> <a class="Bound" href="IO.Finite.html#1401" id="1430">f</a> <a class="Bound" href="IO.Finite.html#1403" id="1432">s</a><a class="Symbol" id="1433">)</a>
+
+<a id="putStr"></a><a class="Function" href="IO.Finite.html#1436" id="1436">putStr</a> <a class="Symbol" id="1443">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1445">String</a> <a class="Symbol" id="1452">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1454">IO</a> <a class="Symbol" id="1457">{</a><a class="Generalizable" href="IO.Finite.html#510" id="1458">a</a><a class="Symbol" id="1459">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1461">⊤</a>
+<a class="Function" href="IO.Finite.html#1436" id="1463">putStr</a> <a class="Bound" href="IO.Finite.html#1470" id="1470">s</a> <a class="Symbol" id="1472">=</a> <a class="Function" href="IO.Base.html#3138" id="1474">lift′</a> <a class="Symbol" id="1480">(</a><a class="Postulate" href="IO.Primitive.Finite.html#1223" id="1481">Prim.putStr</a> <a class="Bound" href="IO.Finite.html#1470" id="1493">s</a><a class="Symbol" id="1494">)</a>
+
+<a id="putStrLn"></a><a class="Function" href="IO.Finite.html#1497" id="1497">putStrLn</a> <a class="Symbol" id="1506">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1508">String</a> <a class="Symbol" id="1515">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1517">IO</a> <a class="Symbol" id="1520">{</a><a class="Generalizable" href="IO.Finite.html#510" id="1521">a</a><a class="Symbol" id="1522">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1524">⊤</a>
+<a class="Function" href="IO.Finite.html#1497" id="1526">putStrLn</a> <a class="Bound" href="IO.Finite.html#1535" id="1535">s</a> <a class="Symbol" id="1537">=</a> <a class="Function" href="IO.Base.html#3138" id="1539">lift′</a> <a class="Symbol" id="1545">(</a><a class="Postulate" href="IO.Primitive.Finite.html#1256" id="1546">Prim.putStrLn</a> <a class="Bound" href="IO.Finite.html#1535" id="1560">s</a><a class="Symbol" id="1561">)</a>
+</pre></div></body></html>

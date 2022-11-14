@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>IO.Primitive</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Primitive IO: simple bindings to Haskell types and functions</a>
+<a class="Comment" id="170">------------------------------------------------------------------------</a>
+
+<a class="Comment" id="244">-- NOTE: the contents of this module should be accessed via `IO`.</a>
+
+<a class="Symbol" id="311">{-#</a> <a class="Keyword" id="315">OPTIONS</a> <a class="Pragma" id="323">--without-K</a> <a class="Symbol" id="335">#-}</a>
+
+<a class="Keyword" id="340">module</a> <a class="Module" href="IO.Primitive.html" id="347">IO.Primitive</a> <a class="Keyword" id="360">where</a>
+
+<a class="Keyword" id="367">open</a> <a class="Keyword" id="372">import</a> <a class="Module" href="Agda.Builtin.IO.html" id="379">Agda.Builtin.IO</a>
+
+<a class="Comment" id="396">------------------------------------------------------------------------</a>
+<a class="Comment" id="469">-- The IO monad</a>
+
+<a class="Keyword" id="486">open</a> <a class="Keyword" id="491">import</a> <a class="Module" href="Agda.Builtin.IO.html" id="498">Agda.Builtin.IO</a> <a class="Keyword" id="514">public</a> <a class="Keyword" id="521">using</a> <a class="Symbol" id="527">(</a><a class="Postulate" href="Agda.Builtin.IO.html#138" id="528">IO</a><a class="Symbol" id="530">)</a>
+
+<a class="Keyword" id="533">infixl</a> <a class="Number" id="540">1</a> <a class="Postulate Operator" href="IO.Primitive.html#601" id="542">_&gt;&gt;=_</a>
+
+<a class="Keyword" id="549">postulate</a>
+  <a id="return"></a><a class="Postulate" href="IO.Primitive.html#561" id="561">return</a> <a class="Symbol" id="568">:</a> <a class="Symbol" id="570">∀</a> <a class="Symbol" id="572">{</a><a class="Bound" href="IO.Primitive.html#573" id="573">a</a><a class="Symbol" id="574">}</a> <a class="Symbol" id="576">{</a><a class="Bound" href="IO.Primitive.html#577" id="577">A</a> <a class="Symbol" id="579">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="581">Set</a> <a class="Bound" href="IO.Primitive.html#573" id="585">a</a><a class="Symbol" id="586">}</a> <a class="Symbol" id="588">→</a> <a class="Bound" href="IO.Primitive.html#577" id="590">A</a> <a class="Symbol" id="592">→</a> <a class="Postulate" href="Agda.Builtin.IO.html#138" id="594">IO</a> <a class="Bound" href="IO.Primitive.html#577" id="597">A</a>
+  <a id="_&gt;&gt;=_"></a><a class="Postulate Operator" href="IO.Primitive.html#601" id="601">_&gt;&gt;=_</a>  <a class="Symbol" id="608">:</a> <a class="Symbol" id="610">∀</a> <a class="Symbol" id="612">{</a><a class="Bound" href="IO.Primitive.html#613" id="613">a</a> <a class="Bound" href="IO.Primitive.html#615" id="615">b</a><a class="Symbol" id="616">}</a> <a class="Symbol" id="618">{</a><a class="Bound" href="IO.Primitive.html#619" id="619">A</a> <a class="Symbol" id="621">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="623">Set</a> <a class="Bound" href="IO.Primitive.html#613" id="627">a</a><a class="Symbol" id="628">}</a> <a class="Symbol" id="630">{</a><a class="Bound" href="IO.Primitive.html#631" id="631">B</a> <a class="Symbol" id="633">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="635">Set</a> <a class="Bound" href="IO.Primitive.html#615" id="639">b</a><a class="Symbol" id="640">}</a> <a class="Symbol" id="642">→</a> <a class="Postulate" href="Agda.Builtin.IO.html#138" id="644">IO</a> <a class="Bound" href="IO.Primitive.html#619" id="647">A</a> <a class="Symbol" id="649">→</a> <a class="Symbol" id="651">(</a><a class="Bound" href="IO.Primitive.html#619" id="652">A</a> <a class="Symbol" id="654">→</a> <a class="Postulate" href="Agda.Builtin.IO.html#138" id="656">IO</a> <a class="Bound" href="IO.Primitive.html#631" id="659">B</a><a class="Symbol" id="660">)</a> <a class="Symbol" id="662">→</a> <a class="Postulate" href="Agda.Builtin.IO.html#138" id="664">IO</a> <a class="Bound" href="IO.Primitive.html#631" id="667">B</a>
+
+<a class="Symbol" id="670">{-#</a> <a class="Keyword" id="674">COMPILE</a> <a class="Keyword" id="682">GHC</a> <a class="Postulate" href="IO.Primitive.html#561" id="686">return</a> <a class="Pragma" id="693">=</a> <a class="Pragma" id="695">\_</a> <a class="Pragma" id="698">_</a> <a class="Pragma" id="700">-&gt;</a> <a class="Pragma" id="703">return</a>    <a class="Symbol" id="713">#-}</a>
+<a class="Symbol" id="717">{-#</a> <a class="Keyword" id="721">COMPILE</a> <a class="Keyword" id="729">GHC</a> <a class="Postulate Operator" href="IO.Primitive.html#601" id="733">_&gt;&gt;=_</a>  <a class="Pragma" id="740">=</a> <a class="Pragma" id="742">\_</a> <a class="Pragma" id="745">_</a> <a class="Pragma" id="747">_</a> <a class="Pragma" id="749">_</a> <a class="Pragma" id="751">-&gt;</a> <a class="Pragma" id="754">(&gt;&gt;=)</a> <a class="Symbol" id="760">#-}</a>
+<a class="Symbol" id="764">{-#</a> <a class="Keyword" id="768">COMPILE</a> <a class="Keyword" id="776">UHC</a> <a class="Postulate" href="IO.Primitive.html#561" id="780">return</a> <a class="Pragma" id="787">=</a> <a class="Pragma" id="789">\_</a> <a class="Pragma" id="792">_</a> <a class="Pragma" id="794">x</a> <a class="Pragma" id="796">-&gt;</a> <a class="Pragma" id="799">UHC.Agda.Builtins.primReturn</a> <a class="Pragma" id="828">x</a> <a class="Symbol" id="830">#-}</a>
+<a class="Symbol" id="834">{-#</a> <a class="Keyword" id="838">COMPILE</a> <a class="Keyword" id="846">UHC</a> <a class="Postulate Operator" href="IO.Primitive.html#601" id="850">_&gt;&gt;=_</a>  <a class="Pragma" id="857">=</a> <a class="Pragma" id="859">\_</a> <a class="Pragma" id="862">_</a> <a class="Pragma" id="864">_</a> <a class="Pragma" id="866">_</a> <a class="Pragma" id="868">x</a> <a class="Pragma" id="870">y</a> <a class="Pragma" id="872">-&gt;</a> <a class="Pragma" id="875">UHC.Agda.Builtins.primBind</a> <a class="Pragma" id="902">x</a> <a class="Pragma" id="904">y</a> <a class="Symbol" id="906">#-}</a>
+</pre></div></body></html>

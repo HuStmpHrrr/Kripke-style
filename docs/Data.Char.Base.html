@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Data.Char.Base</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Basic definitions for Characters</a>
+<a class="Comment" id="142">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="216">{-#</a> <a class="Keyword" id="220">OPTIONS</a> <a class="Pragma" id="228">--without-K</a> <a class="Pragma" id="240">--safe</a> <a class="Symbol" id="247">#-}</a>
+
+<a class="Keyword" id="252">module</a> <a class="Module" href="Data.Char.Base.html" id="259">Data.Char.Base</a> <a class="Keyword" id="274">where</a>
+
+<a class="Keyword" id="281">open</a> <a class="Keyword" id="286">import</a> <a class="Module" href="Level.html" id="293">Level</a> <a class="Keyword" id="299">using</a> <a class="Symbol" id="305">(</a><a class="Primitive" href="Agda.Primitive.html#764" id="306">zero</a><a class="Symbol" id="310">)</a>
+<a class="Keyword" id="312">import</a> <a class="Module" href="Data.Nat.Base.html" id="319">Data.Nat.Base</a> <a class="Symbol" id="333">as</a> <a class="Module" id="336">ℕ</a>
+<a class="Keyword" id="338">open</a> <a class="Keyword" id="343">import</a> <a class="Module" href="Data.Bool.Base.html" id="350">Data.Bool.Base</a> <a class="Keyword" id="365">using</a> <a class="Symbol" id="371">(</a><a class="Datatype" href="Agda.Builtin.Bool.html#163" id="372">Bool</a><a class="Symbol" id="376">)</a>
+<a class="Keyword" id="378">open</a> <a class="Keyword" id="383">import</a> <a class="Module" href="Function.Base.html" id="390">Function.Base</a> <a class="Keyword" id="404">using</a> <a class="Symbol" id="410">(</a><a class="Function Operator" href="Function.Base.html#6137" id="411">_on_</a><a class="Symbol" id="415">)</a>
+<a class="Keyword" id="417">open</a> <a class="Keyword" id="422">import</a> <a class="Module" href="Relation.Binary.Core.html" id="429">Relation.Binary.Core</a> <a class="Keyword" id="450">using</a> <a class="Symbol" id="456">(</a><a class="Function" href="Relation.Binary.Core.html#882" id="457">Rel</a><a class="Symbol" id="460">)</a>
+<a class="Keyword" id="462">open</a> <a class="Keyword" id="467">import</a> <a class="Module" href="Relation.Binary.PropositionalEquality.Core.html" id="474">Relation.Binary.PropositionalEquality.Core</a>
+<a class="Keyword" id="517">open</a> <a class="Keyword" id="522">import</a> <a class="Module" href="Relation.Binary.Construct.Closure.Reflexive.html" id="529">Relation.Binary.Construct.Closure.Reflexive</a>
+
+<a class="Comment" id="574">------------------------------------------------------------------------</a>
+<a class="Comment" id="647">-- Re-export the type, and renamed primitives</a>
+
+<a class="Keyword" id="694">open</a> <a class="Keyword" id="699">import</a> <a class="Module" href="Agda.Builtin.Char.html" id="706">Agda.Builtin.Char</a> <a class="Keyword" id="724">public</a> <a class="Keyword" id="731">using</a> <a class="Symbol" id="737">(</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="739">Char</a> <a class="Symbol" id="744">)</a>
+  <a class="Keyword" id="748">renaming</a>
+  <a class="Comment" id="759">-- testing</a>
+  <a class="Symbol" id="772">(</a> <a class="Primitive" href="Agda.Builtin.Char.html#277" id="774">primIsLower</a>    <a class="Symbol" id="789">to</a> <a class="Primitive" id="792">isLower</a>
+  <a class="Symbol" id="802">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#289" id="804">primIsDigit</a>    <a class="Symbol" id="819">to</a> <a class="Primitive" id="822">isDigit</a>
+  <a class="Symbol" id="832">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#301" id="834">primIsAlpha</a>    <a class="Symbol" id="849">to</a> <a class="Primitive" id="852">isAlpha</a>
+  <a class="Symbol" id="862">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#313" id="864">primIsSpace</a>    <a class="Symbol" id="879">to</a> <a class="Primitive" id="882">isSpace</a>
+  <a class="Symbol" id="892">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#325" id="894">primIsAscii</a>    <a class="Symbol" id="909">to</a> <a class="Primitive" id="912">isAscii</a>
+  <a class="Symbol" id="922">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#341" id="924">primIsLatin1</a>   <a class="Symbol" id="939">to</a> <a class="Primitive" id="942">isLatin1</a>
+  <a class="Symbol" id="953">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#354" id="955">primIsPrint</a>    <a class="Symbol" id="970">to</a> <a class="Primitive" id="973">isPrint</a>
+  <a class="Symbol" id="983">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#366" id="985">primIsHexDigit</a> <a class="Symbol" id="1000">to</a> <a class="Primitive" id="1003">isHexDigit</a>
+  <a class="Comment" id="1016">-- transforming</a>
+  <a class="Symbol" id="1034">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#397" id="1036">primToUpper</a> <a class="Symbol" id="1048">to</a> <a class="Primitive" id="1051">toUpper</a>
+  <a class="Symbol" id="1061">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#409" id="1063">primToLower</a> <a class="Symbol" id="1075">to</a> <a class="Primitive" id="1078">toLower</a>
+  <a class="Comment" id="1088">-- converting</a>
+  <a class="Symbol" id="1104">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#437" id="1106">primCharToNat</a> <a class="Symbol" id="1120">to</a> <a class="Primitive" id="1123">toℕ</a>
+  <a class="Symbol" id="1129">;</a> <a class="Primitive" href="Agda.Builtin.Char.html#466" id="1131">primNatToChar</a> <a class="Symbol" id="1145">to</a> <a class="Primitive" id="1148">fromℕ</a>
+  <a class="Symbol" id="1156">)</a>
+
+<a class="Keyword" id="1159">open</a> <a class="Keyword" id="1164">import</a> <a class="Module" href="Agda.Builtin.String.html" id="1171">Agda.Builtin.String</a> <a class="Keyword" id="1191">public</a> <a class="Keyword" id="1198">using</a> <a class="Symbol" id="1204">()</a>
+  <a class="Keyword" id="1209">renaming</a> <a class="Symbol" id="1218">(</a> <a class="Primitive" href="Agda.Builtin.String.html#632" id="1220">primShowChar</a> <a class="Symbol" id="1233">to</a> <a class="Primitive" id="1236">show</a> <a class="Symbol" id="1241">)</a>
+
+<a class="Keyword" id="1244">infix</a> <a class="Number" id="1250">4</a> <a class="Function Operator" href="Data.Char.Base.html#1260" id="1252">_≈_</a> <a class="Function Operator" href="Data.Char.Base.html#1298" id="1256">_≉_</a>
+<a id="_≈_"></a><a class="Function Operator" href="Data.Char.Base.html#1260" id="1260">_≈_</a> <a class="Symbol" id="1264">:</a> <a class="Function" href="Relation.Binary.Core.html#882" id="1266">Rel</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="1270">Char</a> <a class="Primitive" href="Agda.Primitive.html#764" id="1275">zero</a>
+<a class="Function Operator" href="Data.Char.Base.html#1260" id="1280">_≈_</a> <a class="Symbol" id="1284">=</a> <a class="Datatype Operator" href="Agda.Builtin.Equality.html#151" id="1286">_≡_</a> <a class="Function Operator" href="Function.Base.html#6137" id="1290">on</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1293">toℕ</a>
+
+<a id="_≉_"></a><a class="Function Operator" href="Data.Char.Base.html#1298" id="1298">_≉_</a> <a class="Symbol" id="1302">:</a> <a class="Function" href="Relation.Binary.Core.html#882" id="1304">Rel</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="1308">Char</a> <a class="Primitive" href="Agda.Primitive.html#764" id="1313">zero</a>
+<a class="Function Operator" href="Data.Char.Base.html#1298" id="1318">_≉_</a> <a class="Symbol" id="1322">=</a> <a class="Function Operator" href="Relation.Binary.PropositionalEquality.Core.html#830" id="1324">_≢_</a> <a class="Function Operator" href="Function.Base.html#6137" id="1328">on</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1331">toℕ</a>
+
+<a class="Keyword" id="1336">infix</a> <a class="Number" id="1342">4</a> <a class="Function Operator" href="Data.Char.Base.html#1349" id="1344">_≈ᵇ_</a>
+<a id="_≈ᵇ_"></a><a class="Function Operator" href="Data.Char.Base.html#1349" id="1349">_≈ᵇ_</a> <a class="Symbol" id="1354">:</a> <a class="Symbol" id="1356">(</a><a class="Bound" href="Data.Char.Base.html#1357" id="1357">c</a> <a class="Bound" href="Data.Char.Base.html#1359" id="1359">d</a> <a class="Symbol" id="1361">:</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="1363">Char</a><a class="Symbol" id="1367">)</a> <a class="Symbol" id="1369">→</a> <a class="Datatype" href="Agda.Builtin.Bool.html#163" id="1371">Bool</a>
+<a class="Bound" href="Data.Char.Base.html#1376" id="1376">c</a> <a class="Function Operator" href="Data.Char.Base.html#1349" id="1378">≈ᵇ</a> <a class="Bound" href="Data.Char.Base.html#1381" id="1381">d</a> <a class="Symbol" id="1383">=</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1385">toℕ</a> <a class="Bound" href="Data.Char.Base.html#1376" id="1389">c</a> <a class="Primitive Operator" href="Data.Nat.Base.html#1061" id="1391">ℕ.≡ᵇ</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1396">toℕ</a> <a class="Bound" href="Data.Char.Base.html#1381" id="1400">d</a>
+
+<a class="Keyword" id="1403">infix</a> <a class="Number" id="1409">4</a> <a class="Function Operator" href="Data.Char.Base.html#1415" id="1411">_&lt;_</a>
+<a id="_&lt;_"></a><a class="Function Operator" href="Data.Char.Base.html#1415" id="1415">_&lt;_</a> <a class="Symbol" id="1419">:</a> <a class="Function" href="Relation.Binary.Core.html#882" id="1421">Rel</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="1425">Char</a> <a class="Primitive" href="Agda.Primitive.html#764" id="1430">zero</a>
+<a class="Function Operator" href="Data.Char.Base.html#1415" id="1435">_&lt;_</a> <a class="Symbol" id="1439">=</a> <a class="Function Operator" href="Data.Nat.Base.html#1579" id="1441">ℕ._&lt;_</a> <a class="Function Operator" href="Function.Base.html#6137" id="1447">on</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1450">toℕ</a>
+
+<a class="Keyword" id="1455">infix</a> <a class="Number" id="1461">4</a> <a class="Function Operator" href="Data.Char.Base.html#1467" id="1463">_≤_</a>
+<a id="_≤_"></a><a class="Function Operator" href="Data.Char.Base.html#1467" id="1467">_≤_</a> <a class="Symbol" id="1471">:</a> <a class="Function" href="Relation.Binary.Core.html#882" id="1473">Rel</a> <a class="Postulate" href="Agda.Builtin.Char.html#227" id="1477">Char</a> <a class="Primitive" href="Agda.Primitive.html#764" id="1482">zero</a>
+<a class="Function Operator" href="Data.Char.Base.html#1467" id="1487">_≤_</a> <a class="Symbol" id="1491">=</a> <a class="Datatype" href="Relation.Binary.Construct.Closure.Reflexive.html#788" id="1493">ReflClosure</a> <a class="Function Operator" href="Data.Char.Base.html#1415" id="1505">_&lt;_</a>
+
+<a class="Comment" id="1510">------------------------------------------------------------------------</a>
+<a class="Comment" id="1583">-- DEPRECATED NAMES</a>
+<a class="Comment" id="1603">------------------------------------------------------------------------</a>
+<a class="Comment" id="1676">-- Please use the new names as continuing support for the old names is</a>
+<a class="Comment" id="1747">-- not guaranteed.</a>
+
+<a class="Comment" id="1767">-- Version 1.1</a>
+
+<a id="toNat"></a><a class="Function" href="Data.Char.Base.html#1783" id="1783">toNat</a> <a class="Symbol" id="1789">=</a> <a class="Primitive" href="Data.Char.Base.html#1123" id="1791">toℕ</a>
+<a class="Symbol" id="1795">{-#</a> <a class="Keyword" id="1799">WARNING_ON_USAGE</a> <a class="Pragma" id="1816">toNat</a>
+<a class="String" id="1822">"Warning: toNat was deprecated in v1.1.
+Please use toℕ instead."</a>
+<a class="Symbol" id="1887">#-}</a>
+
+<a id="fromNat"></a><a class="Function" href="Data.Char.Base.html#1892" id="1892">fromNat</a> <a class="Symbol" id="1900">=</a> <a class="Primitive" href="Data.Char.Base.html#1148" id="1902">fromℕ</a>
+<a class="Symbol" id="1908">{-#</a> <a class="Keyword" id="1912">WARNING_ON_USAGE</a> <a class="Pragma" id="1929">fromNat</a>
+<a class="String" id="1937">"Warning: fromNat was deprecated in v1.1.
+Please use fromℕ instead."</a>
+<a class="Symbol" id="2006">#-}</a>
+</pre></div></body></html>

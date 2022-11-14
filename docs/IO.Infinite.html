@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>IO.Infinite</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- IO only involving infinite objects</a>
+<a class="Comment" id="144">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="218">{-#</a> <a class="Keyword" id="222">OPTIONS</a> <a class="Pragma" id="230">--without-K</a> <a class="Pragma" id="242">--guardedness</a> <a class="Symbol" id="256">#-}</a>
+
+<a class="Keyword" id="261">module</a> <a class="Module" href="IO.Infinite.html" id="268">IO.Infinite</a> <a class="Keyword" id="280">where</a>
+
+<a class="Keyword" id="287">open</a> <a class="Keyword" id="292">import</a> <a class="Module" href="Codata.Musical.Costring.html" id="299">Codata.Musical.Costring</a>
+<a class="Keyword" id="323">open</a> <a class="Keyword" id="328">import</a> <a class="Module" href="Agda.Builtin.String.html" id="335">Agda.Builtin.String</a>
+<a class="Keyword" id="355">open</a> <a class="Keyword" id="360">import</a> <a class="Module" href="Data.Unit.Polymorphic.Base.html" id="367">Data.Unit.Polymorphic.Base</a>
+<a class="Keyword" id="394">import</a> <a class="Module" href="Data.Unit.Base.html" id="401">Data.Unit.Base</a> <a class="Symbol" id="416">as</a> <a class="Module" id="419">Unit0</a>
+<a class="Keyword" id="425">open</a> <a class="Keyword" id="430">import</a> <a class="Module" href="IO.Base.html" id="437">IO.Base</a>
+<a class="Keyword" id="445">import</a> <a class="Module" href="IO.Primitive.html" id="452">IO.Primitive</a> <a class="Symbol" id="465">as</a> <a class="Module" id="468">Prim</a>
+<a class="Keyword" id="473">import</a> <a class="Module" href="IO.Primitive.Infinite.html" id="480">IO.Primitive.Infinite</a> <a class="Symbol" id="502">as</a> <a class="Module" id="505">Prim</a>
+<a class="Keyword" id="510">open</a> <a class="Keyword" id="515">import</a> <a class="Module" href="Level.html" id="522">Level</a>
+
+<a class="Keyword" id="529">private</a>
+  <a class="Keyword" id="539">variable</a>
+    <a class="Generalizable" href="IO.Infinite.html#552" id="552">a</a> <a class="Symbol" id="554">:</a> <a class="Postulate" href="Agda.Primitive.html#597" id="556">Level</a>
+
+<a class="Comment" id="563">------------------------------------------------------------------------</a>
+<a class="Comment" id="636">-- Simple lazy IO</a>
+
+<a class="Comment" id="655">-- Note that the functions below produce commands which, when</a>
+<a class="Comment" id="717">-- executed, may raise exceptions.</a>
+
+<a class="Comment" id="753">-- Note also that the semantics of these functions depends on the</a>
+<a class="Comment" id="819">-- version of the Haskell base library. If the version is 4.2.0.0 (or</a>
+<a class="Comment" id="889">-- later?), then the functions use the character encoding specified by</a>
+<a class="Comment" id="960">-- the locale. For older versions of the library (going back to at</a>
+<a class="Comment" id="1027">-- least version 3) the functions use ISO-8859-1.</a>
+
+<a id="getContents"></a><a class="Function" href="IO.Infinite.html#1078" id="1078">getContents</a> <a class="Symbol" id="1090">:</a> <a class="Datatype" href="IO.Base.html#1121" id="1092">IO</a> <a class="Function" href="Codata.Musical.Costring.html#502" id="1095">Costring</a>
+<a class="Function" href="IO.Infinite.html#1078" id="1104">getContents</a> <a class="Symbol" id="1116">=</a> <a class="InductiveConstructor" href="IO.Base.html#1158" id="1118">lift</a> <a class="Postulate" href="IO.Primitive.Infinite.html#1240" id="1123">Prim.getContents</a>
+
+<a id="writeFile"></a><a class="Function" href="IO.Infinite.html#1141" id="1141">writeFile</a> <a class="Symbol" id="1151">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1153">String</a> <a class="Symbol" id="1160">→</a> <a class="Function" href="Codata.Musical.Costring.html#502" id="1162">Costring</a> <a class="Symbol" id="1171">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1173">IO</a> <a class="Symbol" id="1176">{</a><a class="Generalizable" href="IO.Infinite.html#552" id="1177">a</a><a class="Symbol" id="1178">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1180">⊤</a>
+<a class="Function" href="IO.Infinite.html#1141" id="1182">writeFile</a> <a class="Bound" href="IO.Infinite.html#1192" id="1192">f</a> <a class="Bound" href="IO.Infinite.html#1194" id="1194">s</a> <a class="Symbol" id="1196">=</a> <a class="Function" href="IO.Base.html#3138" id="1198">lift′</a> <a class="Symbol" id="1204">(</a><a class="Postulate" href="IO.Primitive.Infinite.html#1305" id="1205">Prim.writeFile</a> <a class="Bound" href="IO.Infinite.html#1192" id="1220">f</a> <a class="Bound" href="IO.Infinite.html#1194" id="1222">s</a><a class="Symbol" id="1223">)</a>
+
+<a id="appendFile"></a><a class="Function" href="IO.Infinite.html#1226" id="1226">appendFile</a> <a class="Symbol" id="1237">:</a> <a class="Postulate" href="Agda.Builtin.String.html#336" id="1239">String</a> <a class="Symbol" id="1246">→</a> <a class="Function" href="Codata.Musical.Costring.html#502" id="1248">Costring</a> <a class="Symbol" id="1257">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1259">IO</a> <a class="Symbol" id="1262">{</a><a class="Generalizable" href="IO.Infinite.html#552" id="1263">a</a><a class="Symbol" id="1264">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1266">⊤</a>
+<a class="Function" href="IO.Infinite.html#1226" id="1268">appendFile</a> <a class="Bound" href="IO.Infinite.html#1279" id="1279">f</a> <a class="Bound" href="IO.Infinite.html#1281" id="1281">s</a> <a class="Symbol" id="1283">=</a> <a class="Function" href="IO.Base.html#3138" id="1285">lift′</a> <a class="Symbol" id="1291">(</a><a class="Postulate" href="IO.Primitive.Infinite.html#1349" id="1292">Prim.appendFile</a> <a class="Bound" href="IO.Infinite.html#1279" id="1308">f</a> <a class="Bound" href="IO.Infinite.html#1281" id="1310">s</a><a class="Symbol" id="1311">)</a>
+
+<a id="putStr"></a><a class="Function" href="IO.Infinite.html#1314" id="1314">putStr</a> <a class="Symbol" id="1321">:</a> <a class="Function" href="Codata.Musical.Costring.html#502" id="1323">Costring</a> <a class="Symbol" id="1332">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1334">IO</a> <a class="Symbol" id="1337">{</a><a class="Generalizable" href="IO.Infinite.html#552" id="1338">a</a><a class="Symbol" id="1339">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1341">⊤</a>
+<a class="Function" href="IO.Infinite.html#1314" id="1343">putStr</a> <a class="Bound" href="IO.Infinite.html#1350" id="1350">s</a> <a class="Symbol" id="1352">=</a> <a class="Function" href="IO.Base.html#3138" id="1354">lift′</a> <a class="Symbol" id="1360">(</a><a class="Postulate" href="IO.Primitive.Infinite.html#1393" id="1361">Prim.putStr</a> <a class="Bound" href="IO.Infinite.html#1350" id="1373">s</a><a class="Symbol" id="1374">)</a>
+
+<a id="putStrLn"></a><a class="Function" href="IO.Infinite.html#1377" id="1377">putStrLn</a> <a class="Symbol" id="1386">:</a> <a class="Function" href="Codata.Musical.Costring.html#502" id="1388">Costring</a> <a class="Symbol" id="1397">→</a> <a class="Datatype" href="IO.Base.html#1121" id="1399">IO</a> <a class="Symbol" id="1402">{</a><a class="Generalizable" href="IO.Infinite.html#552" id="1403">a</a><a class="Symbol" id="1404">}</a> <a class="Function" href="Data.Unit.Polymorphic.Base.html#480" id="1406">⊤</a>
+<a class="Function" href="IO.Infinite.html#1377" id="1408">putStrLn</a> <a class="Bound" href="IO.Infinite.html#1417" id="1417">s</a> <a class="Symbol" id="1419">=</a> <a class="Function" href="IO.Base.html#3138" id="1421">lift′</a> <a class="Symbol" id="1427">(</a><a class="Postulate" href="IO.Primitive.Infinite.html#1428" id="1428">Prim.putStrLn</a> <a class="Bound" href="IO.Infinite.html#1417" id="1442">s</a><a class="Symbol" id="1443">)</a>
+</pre></div></body></html>

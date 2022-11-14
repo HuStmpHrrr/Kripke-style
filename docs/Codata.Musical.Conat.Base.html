@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Codata.Musical.Conat.Base</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Coinductive "natural" numbers: base type and operations</a>
+<a class="Comment" id="165">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="239">{-#</a> <a class="Keyword" id="243">OPTIONS</a> <a class="Pragma" id="251">--safe</a> <a class="Pragma" id="258">--without-K</a> <a class="Pragma" id="270">--guardedness</a> <a class="Symbol" id="284">#-}</a>
+
+<a class="Keyword" id="289">module</a> <a class="Module" href="Codata.Musical.Conat.Base.html" id="296">Codata.Musical.Conat.Base</a> <a class="Keyword" id="322">where</a>
+
+<a class="Keyword" id="329">open</a> <a class="Keyword" id="334">import</a> <a class="Module" href="Codata.Musical.Notation.html" id="341">Codata.Musical.Notation</a>
+<a class="Keyword" id="365">open</a> <a class="Keyword" id="370">import</a> <a class="Module" href="Data.Nat.Base.html" id="377">Data.Nat.Base</a> <a class="Keyword" id="391">using</a> <a class="Symbol" id="397">(</a><a class="Datatype" href="Agda.Builtin.Nat.html#192" id="398">ℕ</a><a class="Symbol" id="399">;</a> <a class="InductiveConstructor" href="Agda.Builtin.Nat.html#210" id="401">zero</a><a class="Symbol" id="405">;</a> <a class="InductiveConstructor" href="Agda.Builtin.Nat.html#223" id="407">suc</a><a class="Symbol" id="410">)</a>
+<a class="Keyword" id="412">open</a> <a class="Keyword" id="417">import</a> <a class="Module" href="Function.Base.html" id="424">Function.Base</a> <a class="Keyword" id="438">using</a> <a class="Symbol" id="444">(</a><a class="Function Operator" href="Function.Base.html#4414" id="445">_∋_</a><a class="Symbol" id="448">)</a>
+
+<a class="Comment" id="451">------------------------------------------------------------------------</a>
+<a class="Comment" id="524">-- The type</a>
+
+<a class="Keyword" id="537">data</a> <a id="Coℕ"></a><a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="542">Coℕ</a> <a class="Symbol" id="546">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="548">Set</a> <a class="Keyword" id="552">where</a>
+  <a id="Coℕ.zero"></a><a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#560" id="560">zero</a> <a class="Symbol" id="565">:</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="567">Coℕ</a>
+  <a id="Coℕ.suc"></a><a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="573">suc</a>  <a class="Symbol" id="578">:</a> <a class="Symbol" id="580">(</a><a class="Bound" href="Codata.Musical.Conat.Base.html#581" id="581">n</a> <a class="Symbol" id="583">:</a> <a class="Record" href="Agda.Builtin.Coinduction.html#185" id="585">∞</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="587">Coℕ</a><a class="Symbol" id="590">)</a> <a class="Symbol" id="592">→</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="594">Coℕ</a>
+
+<a class="Comment" id="599">------------------------------------------------------------------------</a>
+<a class="Comment" id="672">-- Constant</a>
+
+<a id="∞ℕ"></a><a class="Function" href="Codata.Musical.Conat.Base.html#685" id="685">∞ℕ</a> <a class="Symbol" id="688">:</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="690">Coℕ</a>
+<a class="Function" href="Codata.Musical.Conat.Base.html#685" id="694">∞ℕ</a> <a class="Symbol" id="697">=</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="699">suc</a> <a class="Symbol" id="703">(</a><a class="CoinductiveConstructor Operator" href="Agda.Builtin.Coinduction.html#218" id="704">♯</a> <a class="Function" href="Codata.Musical.Conat.Base.html#685" id="706">∞ℕ</a><a class="Symbol" id="708">)</a>
+
+<a class="Comment" id="711">------------------------------------------------------------------------</a>
+<a class="Comment" id="784">-- Some operations</a>
+
+<a id="pred"></a><a class="Function" href="Codata.Musical.Conat.Base.html#804" id="804">pred</a> <a class="Symbol" id="809">:</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="811">Coℕ</a> <a class="Symbol" id="815">→</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="817">Coℕ</a>
+<a class="Function" href="Codata.Musical.Conat.Base.html#804" id="821">pred</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#560" id="826">zero</a>    <a class="Symbol" id="834">=</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#560" id="836">zero</a>
+<a class="Function" href="Codata.Musical.Conat.Base.html#804" id="841">pred</a> <a class="Symbol" id="846">(</a><a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="847">suc</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#851" id="851">n</a><a class="Symbol" id="852">)</a> <a class="Symbol" id="854">=</a> <a class="Field" href="Agda.Builtin.Coinduction.html#253" id="856">♭</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#851" id="858">n</a>
+
+<a id="fromℕ"></a><a class="Function" href="Codata.Musical.Conat.Base.html#861" id="861">fromℕ</a> <a class="Symbol" id="867">:</a> <a class="Datatype" href="Agda.Builtin.Nat.html#192" id="869">ℕ</a> <a class="Symbol" id="871">→</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="873">Coℕ</a>
+<a class="Function" href="Codata.Musical.Conat.Base.html#861" id="877">fromℕ</a> <a class="InductiveConstructor" href="Agda.Builtin.Nat.html#210" id="883">zero</a>    <a class="Symbol" id="891">=</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#560" id="893">zero</a>
+<a class="Function" href="Codata.Musical.Conat.Base.html#861" id="898">fromℕ</a> <a class="Symbol" id="904">(</a><a class="InductiveConstructor" href="Agda.Builtin.Nat.html#223" id="905">suc</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#909" id="909">n</a><a class="Symbol" id="910">)</a> <a class="Symbol" id="912">=</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="914">suc</a> <a class="Symbol" id="918">(</a><a class="CoinductiveConstructor Operator" href="Agda.Builtin.Coinduction.html#218" id="919">♯</a> <a class="Function" href="Codata.Musical.Conat.Base.html#861" id="921">fromℕ</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#909" id="927">n</a><a class="Symbol" id="928">)</a>
+
+<a class="Keyword" id="931">infixl</a> <a class="Number" id="938">6</a> <a class="Function Operator" href="Codata.Musical.Conat.Base.html#945" id="940">_+_</a>
+
+<a id="_+_"></a><a class="Function Operator" href="Codata.Musical.Conat.Base.html#945" id="945">_+_</a> <a class="Symbol" id="949">:</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="951">Coℕ</a> <a class="Symbol" id="955">→</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="957">Coℕ</a> <a class="Symbol" id="961">→</a> <a class="Datatype" href="Codata.Musical.Conat.Base.html#542" id="963">Coℕ</a>
+<a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#560" id="967">zero</a>  <a class="Function Operator" href="Codata.Musical.Conat.Base.html#945" id="973">+</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#975" id="975">n</a> <a class="Symbol" id="977">=</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#975" id="979">n</a>
+<a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="981">suc</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#985" id="985">m</a> <a class="Function Operator" href="Codata.Musical.Conat.Base.html#945" id="987">+</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#989" id="989">n</a> <a class="Symbol" id="991">=</a> <a class="InductiveConstructor" href="Codata.Musical.Conat.Base.html#573" id="993">suc</a> <a class="Symbol" id="997">(</a><a class="CoinductiveConstructor Operator" href="Agda.Builtin.Coinduction.html#218" id="998">♯</a> <a class="Symbol" id="1000">(</a><a class="Field" href="Agda.Builtin.Coinduction.html#253" id="1001">♭</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#985" id="1003">m</a> <a class="Function Operator" href="Codata.Musical.Conat.Base.html#945" id="1005">+</a> <a class="Bound" href="Codata.Musical.Conat.Base.html#989" id="1007">n</a><a class="Symbol" id="1008">))</a>
+</pre></div></body></html>

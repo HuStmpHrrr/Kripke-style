@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Data.Bool</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- Booleans</a>
+<a class="Comment" id="118">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="192">{-#</a> <a class="Keyword" id="196">OPTIONS</a> <a class="Pragma" id="204">--without-K</a> <a class="Pragma" id="216">--safe</a> <a class="Symbol" id="223">#-}</a>
+
+<a class="Keyword" id="228">module</a> <a class="Module" href="Data.Bool.html" id="235">Data.Bool</a> <a class="Keyword" id="245">where</a>
+
+<a class="Keyword" id="252">open</a> <a class="Keyword" id="257">import</a> <a class="Module" href="Relation.Nullary.html" id="264">Relation.Nullary</a>
+<a class="Keyword" id="281">open</a> <a class="Keyword" id="286">import</a> <a class="Module" href="Relation.Binary.html" id="293">Relation.Binary</a>
+<a class="Keyword" id="309">open</a> <a class="Keyword" id="314">import</a> <a class="Module" href="Relation.Binary.PropositionalEquality.html" id="321">Relation.Binary.PropositionalEquality</a> <a class="Symbol" id="359">as</a> <a class="Module" id="362">PropEq</a>
+  <a class="Keyword" id="371">using</a> <a class="Symbol" id="377">(</a><a class="Datatype Operator" href="Agda.Builtin.Equality.html#151" id="378">_≡_</a><a class="Symbol" id="381">;</a> <a class="InductiveConstructor" href="Agda.Builtin.Equality.html#208" id="383">refl</a><a class="Symbol" id="387">)</a>
+
+<a class="Comment" id="390">------------------------------------------------------------------------</a>
+<a class="Comment" id="463">-- The boolean type and some operations</a>
+
+<a class="Keyword" id="504">open</a> <a class="Keyword" id="509">import</a> <a class="Module" href="Data.Bool.Base.html" id="516">Data.Bool.Base</a> <a class="Keyword" id="531">public</a>
+
+<a class="Comment" id="539">------------------------------------------------------------------------</a>
+<a class="Comment" id="612">-- Publicly re-export queries</a>
+
+<a class="Keyword" id="643">open</a> <a class="Keyword" id="648">import</a> <a class="Module" href="Data.Bool.Properties.html" id="655">Data.Bool.Properties</a> <a class="Keyword" id="676">public</a>
+  <a class="Keyword" id="685">using</a> <a class="Symbol" id="691">(</a><a class="Function" href="Data.Bool.Properties.html#15758" id="692">T?</a><a class="Symbol" id="694">;</a> <a class="Function Operator" href="Data.Bool.Properties.html#1294" id="696">_≟_</a><a class="Symbol" id="699">;</a> <a class="Function Operator" href="Data.Bool.Properties.html#2132" id="701">_≤?_</a><a class="Symbol" id="705">;</a> <a class="Function Operator" href="Data.Bool.Properties.html#3929" id="707">_&lt;?_</a><a class="Symbol" id="711">)</a>
+
+
+<a class="Comment" id="715">------------------------------------------------------------------------</a>
+<a class="Comment" id="788">-- DEPRECATED NAMES</a>
+<a class="Comment" id="808">------------------------------------------------------------------------</a>
+<a class="Comment" id="881">-- Please use the new names as continuing support for the old names is</a>
+<a class="Comment" id="952">-- not guaranteed.</a>
+
+<a class="Comment" id="972">-- Version 1.1</a>
+
+<a id="decSetoid"></a><a class="Function" href="Data.Bool.html#988" id="988">decSetoid</a> <a class="Symbol" id="998">=</a> <a class="Function" href="Data.Bool.Properties.html#1470" id="1000">Data.Bool.Properties.≡-decSetoid</a>
+<a class="Symbol" id="1033">{-#</a> <a class="Keyword" id="1037">WARNING_ON_USAGE</a> <a class="Pragma" id="1054">decSetoid</a>
+<a class="String" id="1064">"Warning: decSetoid was deprecated in v1.1.
+Please use ≡-decSetoid from Data.Bool.Properties instead."</a>
+<a class="Symbol" id="1167">#-}</a>
+</pre></div></body></html>

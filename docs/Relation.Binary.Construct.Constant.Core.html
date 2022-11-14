@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html><head><meta charset="utf-8"/><title>Relation.Binary.Construct.Constant.Core</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Comment" id="1">------------------------------------------------------------------------</a>
+<a class="Comment" id="74">-- The Agda standard library</a>
+<a class="Comment" id="103">--</a>
+<a class="Comment" id="106">-- The binary relation defined by a constant</a>
+<a class="Comment" id="151">------------------------------------------------------------------------</a>
+
+<a class="Symbol" id="225">{-#</a> <a class="Keyword" id="229">OPTIONS</a> <a class="Pragma" id="237">--without-K</a> <a class="Pragma" id="249">--safe</a> <a class="Symbol" id="256">#-}</a>
+
+<a class="Keyword" id="261">module</a> <a class="Module" href="Relation.Binary.Construct.Constant.Core.html" id="268">Relation.Binary.Construct.Constant.Core</a> <a class="Keyword" id="308">where</a>
+
+<a class="Keyword" id="315">open</a> <a class="Keyword" id="320">import</a> <a class="Module" href="Level.html" id="327">Level</a>
+<a class="Keyword" id="333">open</a> <a class="Keyword" id="338">import</a> <a class="Module" href="Relation.Binary.Core.html" id="345">Relation.Binary.Core</a> <a class="Keyword" id="366">using</a> <a class="Symbol" id="372">(</a><a class="Function" href="Relation.Binary.Core.html#766" id="373">REL</a><a class="Symbol" id="376">)</a>
+
+<a class="Keyword" id="379">private</a>
+  <a class="Keyword" id="389">variable</a>
+    <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#402" id="402">a</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#404" id="404">b</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#406" id="406">c</a> <a class="Symbol" id="408">:</a> <a class="Postulate" href="Agda.Primitive.html#597" id="410">Level</a>
+    <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#420" id="420">A</a> <a class="Symbol" id="422">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="424">Set</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#402" id="428">a</a>
+    <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#434" id="434">B</a> <a class="Symbol" id="436">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="438">Set</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#404" id="442">b</a>
+
+<a class="Comment" id="445">------------------------------------------------------------------------</a>
+<a class="Comment" id="518">-- Definition</a>
+
+<a id="Const"></a><a class="Function" href="Relation.Binary.Construct.Constant.Core.html#533" id="533">Const</a> <a class="Symbol" id="539">:</a> <a class="Primitive" href="Agda.Primitive.html#326" id="541">Set</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#406" id="545">c</a> <a class="Symbol" id="547">→</a> <a class="Function" href="Relation.Binary.Core.html#766" id="549">REL</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#420" id="553">A</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#434" id="555">B</a> <a class="Generalizable" href="Relation.Binary.Construct.Constant.Core.html#406" id="557">c</a>
+<a class="Function" href="Relation.Binary.Construct.Constant.Core.html#533" id="559">Const</a> <a class="Bound" href="Relation.Binary.Construct.Constant.Core.html#565" id="565">I</a> <a class="Symbol" id="567">=</a> <a class="Symbol" id="569">λ</a> <a class="Bound" href="Relation.Binary.Construct.Constant.Core.html#571" id="571">_</a> <a class="Bound" href="Relation.Binary.Construct.Constant.Core.html#573" id="573">_</a> <a class="Symbol" id="575">→</a> <a class="Bound" href="Relation.Binary.Construct.Constant.Core.html#565" id="577">I</a>
+</pre></div></body></html>
