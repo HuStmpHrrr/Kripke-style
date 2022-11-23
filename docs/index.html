@@ -52,7 +52,7 @@
 <body>
 <h1 id="an-investigation-of-kripke-style-modal-type-theories">An Investigation of Kripke-style Modal Type Theories</h1>
 <p>This homepage contains the investigation of properties of Kripke-style modal type theories, normalization in particular.</p>
-<p>Please find the <a href="https://arxiv.org/abs/2206.07823">technical report</a> for more detailed development. Most of our development has been <a href="README.html">mechanized</a> in safe Agda with standard extensions.</p>
+<p>Please find the <a href="https://arxiv.org/abs/2206.07823">technical report</a> for more detailed development. Most of our development has been <a href="README.html">mechanized</a> in safe Agda with standard extensions. The normalization algorithm for our dependent type theory, <strong>Mint</strong> is extracted and can be <a href="executable/">executed</a> in Haskell.</p>
 <h2 id="papers">Paper(s)</h2>
 <ol type="1">
 <li><p>Jason Z. S. Hu and Brigitte Pientka. A Categorical Normalization Proof for the Modal Lambda-Calculus (<strong>MFPS 22</strong>)</p>
@@ -64,11 +64,11 @@
 <p>Then the following script will use <code>stack</code> to install Agda in <code>~/.local/bin/</code>.</p>
 <pre class="bash"><code>git clone https://github.com/agda/agda
 cd agda
-git checkout release-2.6.2.1
+git checkout release-2.6.2.2
 cp stack-8.4.4.yaml stack.yaml # choose your favourite Haskell version
 stack stall # it is going to take a while
-cp ~/.local/bin/agda ~/.local/bin/agda-2.6.2.1
-cp ~/.local/bin/agda-mode ~/.local/bin/agda-mode-2.6.2.1</code></pre>
+cp ~/.local/bin/agda ~/.local/bin/agda-2.6.2.2
+cp ~/.local/bin/agda-mode ~/.local/bin/agda-mode-2.6.2.2</code></pre>
 <p>If Agda does not run, please check to make sure it is in your PATH.</p>
 </body>
 </html>
