@@ -7,5 +7,5 @@ import Unbox.README
 
 -- formalization and normalization for Mint
 import Mint.README
--- an example for typechecking in Mint
+-- an example for normalization in Mint
 import Mint.Example

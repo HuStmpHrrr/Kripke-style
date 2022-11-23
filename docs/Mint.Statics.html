@@ -1,24 +1,25 @@
 <!DOCTYPE HTML>
-<html><head><meta charset="utf-8"><title>Mint.Statics</title><link rel="stylesheet" href="Agda.css"><script type="text/javascript" src="highlight-hover.js"></script></head><body><pre class="Agda"><a id="1" class="Symbol">{-#</a> <a id="5" class="Keyword">OPTIONS</a> <a id="13" class="Pragma">--without-K</a> <a id="25" class="Pragma">--safe</a> <a id="32" class="Symbol">#-}</a>
 
-<a id="37" class="Comment">-- This module defines the syntax and typing rule of Mint</a>
-<a id="95" class="Comment">--</a>
-<a id="98" class="Comment">-- The syntax of Mint contains variables, natural numbers, dependent functions and □ modality</a>
-<a id="192" class="Comment">-- with explicit substitutions.</a>
-<a id="224" class="Comment">-- We use de Bruijn indices for name representation and employ β-η normal forms.</a>
-<a id="305" class="Comment">--</a>
-<a id="308" class="Comment">-- We have two sets of typing rules in this module (there is another set Mint.Soundness.Typing):</a>
-<a id="405" class="Comment">--</a>
-<a id="408" class="Comment">-- Mint.Statics.Concise: the true and golden set of typing rules</a>
-<a id="473" class="Comment">-- Mint.Statics.Full: an enriched set of typing rules which</a>
-<a id="533" class="Comment">--     1. is used to prove syntactic properties of Concise, and</a>
-<a id="597" class="Comment">--     2. serves as a &quot;bridge&quot; set of rules which connects Concise to yet another set of typing rules,</a>
-<a id="700" class="Comment">--        Mint.Soundness.Typing, which is required to overcome some technicalities encountered in the</a>
-<a id="802" class="Comment">--        soundness proof.</a>
-<a id="829" class="Comment">--</a>
-<a id="832" class="Comment">-- Concise and Full are proved equivalent in Mint.Statics.Equiv.</a>
-<a id="897" class="Keyword">module</a> <a id="904" href="Mint.Statics.html" class="Module">Mint.Statics</a> <a id="917" class="Keyword">where</a>
+<html><head><meta charset="utf-8"/><title>Mint.Statics</title><link href="Agda.css" rel="stylesheet"/><script src="highlight-hover.js" type="text/javascript"></script></head><body><div class="navbar"><a class="active" href="README.html">Everything</a><a href="index.html" style="float:right">Home</a></div><div class="main"><pre class="Agda"><a class="Symbol" id="1">{-#</a> <a class="Keyword" id="5">OPTIONS</a> <a class="Pragma" id="13">--without-K</a> <a class="Pragma" id="25">--safe</a> <a class="Symbol" id="32">#-}</a>
 
-<a id="924" class="Comment">-- The Concise set of rules are the gold standard rules.</a>
-<a id="981" class="Keyword">open</a> <a id="986" class="Keyword">import</a> <a id="993" href="Mint.Statics.Concise.html" class="Module">Mint.Statics.Concise</a> <a id="1014" class="Keyword">public</a>
-</pre></body></html>
+<a class="Comment" id="37">-- This module defines the syntax and typing rule of Mint</a>
+<a class="Comment" id="95">--</a>
+<a class="Comment" id="98">-- The syntax of Mint contains variables, natural numbers, dependent functions and □ modality</a>
+<a class="Comment" id="192">-- with explicit substitutions.</a>
+<a class="Comment" id="224">-- We use de Bruijn indices for name representation and employ β-η normal forms.</a>
+<a class="Comment" id="305">--</a>
+<a class="Comment" id="308">-- We have two sets of typing rules in this module (there is another set Mint.Soundness.Typing):</a>
+<a class="Comment" id="405">--</a>
+<a class="Comment" id="408">-- Mint.Statics.Concise: the true and golden set of typing rules</a>
+<a class="Comment" id="473">-- Mint.Statics.Full: an enriched set of typing rules which</a>
+<a class="Comment" id="533">--     1. is used to prove syntactic properties of Concise, and</a>
+<a class="Comment" id="597">--     2. serves as a "bridge" set of rules which connects Concise to yet another set of typing rules,</a>
+<a class="Comment" id="700">--        Mint.Soundness.Typing, which is required to overcome some technicalities encountered in the</a>
+<a class="Comment" id="802">--        soundness proof.</a>
+<a class="Comment" id="829">--</a>
+<a class="Comment" id="832">-- Concise and Full are proved equivalent in Mint.Statics.Equiv.</a>
+<a class="Keyword" id="897">module</a> <a class="Module" href="Mint.Statics.html" id="904">Mint.Statics</a> <a class="Keyword" id="917">where</a>
+
+<a class="Comment" id="924">-- The Concise set of rules are the gold standard rules.</a>
+<a class="Keyword" id="981">open</a> <a class="Keyword" id="986">import</a> <a class="Module" href="Mint.Statics.Concise.html" id="993">Mint.Statics.Concise</a> <a class="Keyword" id="1014">public</a>
+</pre></div></body></html>
