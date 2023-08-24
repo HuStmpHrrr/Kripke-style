@@ -37,7 +37,7 @@ git clone https://github.com/agda/agda
 cd agda
 git checkout release-2.6.2.2
 cp stack-8.4.4.yaml stack.yaml # choose your favourite Haskell version
-stack stall # it is going to take a while
+stack install # it is going to take a while
 cp ~/.local/bin/agda ~/.local/bin/agda-2.6.2.2
 cp ~/.local/bin/agda-mode ~/.local/bin/agda-mode-2.6.2.2
 ```
