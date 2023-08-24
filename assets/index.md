@@ -9,12 +9,16 @@ development. Most of our development has been [mechanized](README.html) in safe 
 with standard extensions. The normalization algorithm for our dependent type theory,
 **Mint** is extracted and can be [executed](executable/) in Haskell.
 
-## Paper(s)
+## Papers
 
 1. Jason Z. S. Hu and Brigitte Pientka. A Categorical Normalization Proof for the
    Modal Lambda-Calculus (**MFPS 22**)
    
    [See the code](Unbox.README.html)
+
+1. Jason Z. S. Hu, Junyoung Jang and Brigitte Pientka. Normalization by Evaluation for Modal Dependent Type Theory (**JFP 23**)
+   
+   [See the code](Mint.README.html)
 
 
 ## Installing Agda
